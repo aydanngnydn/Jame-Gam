@@ -49,7 +49,7 @@ public class PlayerMovement : MonoBehaviour
             jumpTimer = Time.time + jumpDelay;
         }
         
-        if (isPlayerGrounded && jumpTimer > Time.time) Jump();
+        if (OnGroundCheck() && jumpTimer > Time.time) Jump();
     }
 
     void FixedUpdate()
@@ -59,7 +59,7 @@ public class PlayerMovement : MonoBehaviour
     }
     void PlayerInput()
     {
-        if (name == "Player1")
+        if (name == "Player2")
         {
             if (Input.GetKeyDown(KeyCode.RightArrow))
             {
@@ -71,7 +71,7 @@ public class PlayerMovement : MonoBehaviour
             }
 
         }
-        else if(name == "Player2")
+        else if(name == "Player1")
         {
             if (Input.GetKeyDown(KeyCode.A))
             {
@@ -87,6 +87,15 @@ public class PlayerMovement : MonoBehaviour
     void MovePlayer(float direction)
     {
         rb.AddForce(direction * Vector2.right);
+        if (!jumpMode)
+        {
+            rb.AddForce(dirY * moveSpeed * Vector2.up);
+        }
+
+        if (Mathf.Abs(rb.velocity.x) > maxSpeed)
+        {
+            rb.velocity = new Vector2(Mathf.Sign(rb.velocity.x) * maxSpeed, rb.velocity.y);
+        }
     }
 
     void Jump()
@@ -106,7 +115,7 @@ public class PlayerMovement : MonoBehaviour
     {
         
         bool changingDirection = (dirX > 0 && rb.velocity.x < 0) || (dirX < 0 && rb.velocity.x > 0);
-        if (isPlayerGrounded && jumpMode)
+        if (OnGroundCheck() && jumpMode)
         {
             if (Math.Abs(dirX) < 0.4f || changingDirection)
             {
@@ -138,5 +147,21 @@ public class PlayerMovement : MonoBehaviour
             rb.drag = linearDrag;
             //rb.gravityScale = 0;
         }
+    }
+
+    bool OnGroundCheck()
+    {
+        isPlayerGrounded =
+            Physics2D.Raycast(transform.position + colliderOffset, Vector2.down, groundCheckDistance,
+                groundCheckLayer) || Physics2D.Raycast(transform.position - colliderOffset, Vector2.down,
+                groundCheckDistance, groundCheckLayer);
+        return isPlayerGrounded;
+    }
+
+    private void OnDrawGizmos()
+    {
+        Gizmos.color = Color.cyan;
+        Gizmos.DrawLine(transform.position + colliderOffset, transform.position + colliderOffset + (Vector3.down * groundCheckDistance));
+        Gizmos.DrawLine(transform.position - colliderOffset, transform.position - colliderOffset + (Vector3.down * groundCheckDistance));
     }
 }
