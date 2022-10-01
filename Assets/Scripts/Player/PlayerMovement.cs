@@ -21,6 +21,7 @@ public class PlayerMovement : MonoBehaviour
     [SerializeField] private float jumpDelay = 0.25f;
     private float jumpTimer;
     public bool doubleJumpMode = false;
+    private bool canDoubleJump = false;
     private UpgradeManager upgradeManager;
 
     [Header("Physics")]
@@ -69,7 +70,25 @@ public class PlayerMovement : MonoBehaviour
         }
         else
         {
-
+            if(OnGroundCheck())
+            {
+                canDoubleJump = true;
+            }
+            if(jumpTimer > Time.time)
+            {
+                if (isPlayerGrounded)
+                {
+                    Jump();
+                }
+                else
+                {
+                    if (canDoubleJump)
+                    {
+                        Jump();
+                        canDoubleJump = false;
+                    }
+                }
+            }
         }
 
     }
@@ -108,7 +127,6 @@ public class PlayerMovement : MonoBehaviour
 
         rb.AddForce(jumpSpeed * Vector2.up, ForceMode2D.Impulse);
         jumpTimer = 0;
-
     }
 
     private void FlipFace()

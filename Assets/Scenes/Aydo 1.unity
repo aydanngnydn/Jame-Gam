@@ -396,6 +396,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 2563524760767730328, guid: 67e6747f9ce47954ca67292a7bac6e46, type: 3}
+      propertyPath: m_Layer
+      value: 3
+      objectReference: {fileID: 0}
     - target: {fileID: 2563524760767730334, guid: 67e6747f9ce47954ca67292a7bac6e46, type: 3}
       propertyPath: selectPlayer
       value: Player2
@@ -403,6 +407,10 @@ PrefabInstance:
     - target: {fileID: 2563524762010214291, guid: 67e6747f9ce47954ca67292a7bac6e46, type: 3}
       propertyPath: m_Name
       value: Player2
+      objectReference: {fileID: 0}
+    - target: {fileID: 2563524762010214291, guid: 67e6747f9ce47954ca67292a7bac6e46, type: 3}
+      propertyPath: m_Layer
+      value: 3
       objectReference: {fileID: 0}
     - target: {fileID: 2563524762010214293, guid: 67e6747f9ce47954ca67292a7bac6e46, type: 3}
       propertyPath: m_RootOrder
