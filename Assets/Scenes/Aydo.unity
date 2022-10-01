@@ -167,6 +167,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 48a93a7fb98be34449d84d92391bc135, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  selectPlayer: 
   playerBullet: {fileID: 632609147241551079, guid: 996cfbe8192e1bf4ab87d45e71736be0, type: 3}
   nextFire: 0.2
 --- !u!1 &685615589
@@ -270,12 +271,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: dfe9dfa42e3a3b14d86c95850d35b1f6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  moveSpeed: 1
-  groundCheckDistance: 0
-  colliderOffset: {x: 0, y: 0, z: 0}
+  moveSpeed: 10
+  groundCheckDistance: 1
+  colliderOffset: {x: 0.6, y: 0, z: 0}
   groundCheckLayer:
     serializedVersion: 2
-    m_Bits: 0
+    m_Bits: 8
   jumpSpeed: 15
   jumpDelay: 0.25
   maxSpeed: 7
@@ -295,14 +296,14 @@ Rigidbody2D:
   m_UseFullKinematicContacts: 0
   m_UseAutoMass: 0
   m_Mass: 1
-  m_LinearDrag: 0
+  m_LinearDrag: 2
   m_AngularDrag: 0.05
   m_GravityScale: 1
   m_Material: {fileID: 0}
   m_Interpolate: 0
   m_SleepingMode: 1
   m_CollisionDetection: 0
-  m_Constraints: 0
+  m_Constraints: 4
 --- !u!61 &685615594
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -356,7 +357,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1120126450}
   - component: {fileID: 1120126449}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: GameObject
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -481,14 +482,14 @@ Rigidbody2D:
   m_UseFullKinematicContacts: 0
   m_UseAutoMass: 0
   m_Mass: 1
-  m_LinearDrag: 0
+  m_LinearDrag: 2
   m_AngularDrag: 0.05
   m_GravityScale: 1
   m_Material: {fileID: 0}
   m_Interpolate: 0
   m_SleepingMode: 1
   m_CollisionDetection: 0
-  m_Constraints: 0
+  m_Constraints: 4
 --- !u!114 &1382213068
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -501,12 +502,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: dfe9dfa42e3a3b14d86c95850d35b1f6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  moveSpeed: 1
-  groundCheckDistance: 0
-  colliderOffset: {x: 0, y: 0, z: 0}
+  moveSpeed: 10
+  groundCheckDistance: 1
+  colliderOffset: {x: 0.6, y: 0, z: 0}
   groundCheckLayer:
     serializedVersion: 2
-    m_Bits: 0
+    m_Bits: 8
   jumpSpeed: 15
   jumpDelay: 0.25
   maxSpeed: 7
@@ -573,7 +574,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1382213064}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalPosition: {x: 2.15, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -709,5 +710,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 48a93a7fb98be34449d84d92391bc135, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  selectPlayer: 
   playerBullet: {fileID: 632609147241551079, guid: 996cfbe8192e1bf4ab87d45e71736be0, type: 3}
   nextFire: 0.2
