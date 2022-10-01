@@ -1,7 +1,9 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEditor.Experimental.GraphView;
 using UnityEngine;
+
 
 public class PlayerMovement : MonoBehaviour
 {
@@ -9,30 +11,111 @@ public class PlayerMovement : MonoBehaviour
     private Vector2 inputDir;
     private bool facingRight = true;
     [SerializeField] private float moveSpeed;
+    private float dirY, dirX;
 
     [Header("Ground Check")] 
-    private bool isPlayerGrouneded;
-
+    private bool isPlayerGrounded;
     [SerializeField] float groundCheckDistance;
     [SerializeField] private Vector3 colliderOffset;
     [SerializeField] private LayerMask groundCheckLayer;
 
     [Header("Jump")] 
     [SerializeField] private float jumpSpeed = 15f;
-
     [SerializeField] private float jumpDelay = 0.25f;
     private bool jumpMode = false;
-    
-    
-    
-    void Start()
+    private float jumpTimer;
+
+    [Header("Physics")] 
+    private Rigidbody2D rb;
+    [SerializeField] private float maxSpeed = 7f;
+    [SerializeField] private float linearDrag = 2f;
+    [SerializeField] private float gravity = 1;
+    [SerializeField] private float fallMultiplier = 4f;
+
+    private void Awake()
     {
-        
+        rb = GetComponent<Rigidbody2D>();
     }
 
-    // Update is called once per frame
     void Update()
     {
+        PlayerInput();
+        MovePlayer(dirX);
+    }
+
+    void PlayerInput()
+    {
+        if (name == "Player1")
+        {
+            if (Input.GetKeyDown(KeyCode.RightArrow))
+            {
+                dirX = moveSpeed;
+            }
+            else if (Input.GetKeyDown(KeyCode.LeftArrow))
+            {
+                dirX = -moveSpeed;
+            }
+
+        }
+        else if(name == "Player2")
+        {
+            if (Input.GetKeyDown(KeyCode.A))
+            {
+                dirX = -moveSpeed;
+            }
+            else if (Input.GetKeyDown(KeyCode.D))
+            {
+                dirX = +moveSpeed;
+            }
+        }
+    }
+    
+    void MovePlayer(float direction)
+    {
+        rb.AddForce(direction * Vector2.right);
+    }
+
+    void FlipFace()
+    {
+        facingRight = !facingRight;
+        transform.rotation = Quaternion.Euler(0,facingRight ? 0 : 180, 0);
+    }
+
+    void ModifyPhysics()
+    {
         
+        bool changingDirection = (dirX > 0 && rb.velocity.x < 0) || (dirX < 0 && rb.velocity.x > 0);
+        if (isPlayerGrounded && jumpMode)
+        {
+            if (Math.Abs(dirX) < 0.4f || changingDirection)
+            {
+                rb.drag = linearDrag;
+            }
+            else
+            {
+                rb.drag = linearDrag * 0.8f;
+            }
+
+            rb.gravityScale = 0;
+        }
+        else if (jumpMode)
+        {
+            rb.gravityScale = gravity;
+            rb.drag = linearDrag;
+
+            if (rb.velocity.y < 0)
+            {
+                rb.gravityScale = gravity * fallMultiplier;
+            }
+            else if (rb.velocity.y > 0 && !Input.GetKey(KeyCode.UpArrow))
+            {
+                rb.gravityScale = gravity * (fallMultiplier / 2);
+            }
+        }
+        else
+        {
+            rb.drag = linearDrag;
+            rb.gravityScale = 0;
+        }
     }
 }
