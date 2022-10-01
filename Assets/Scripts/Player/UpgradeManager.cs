@@ -8,6 +8,9 @@ using UnityEngine;
 public class UpgradeManager : MonoBehaviour
 {
     private BulletSpawner defaultMode;
+
+    public event Action OnDoubleJumpUpgrade;
+
     private void Awake()
     {
         defaultMode = GetComponentInChildren<BulletSpawner>();
@@ -29,6 +32,7 @@ public class UpgradeManager : MonoBehaviour
                case States.damage:
                    break;
                case States.jump:
+                    OnDoubleJumpUpgrade?.Invoke();
                    break;
                case States.triple:
                    defaultMode.enabled = false;
