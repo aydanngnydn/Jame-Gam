@@ -56,11 +56,14 @@ public class PlayerMovement : MonoBehaviour
         {
             inputDir = new Vector2(Input.GetAxisRaw("Player1 Horizontal"), 0);
         }
+        
         OnGroundCheck();
     }
 
     void MovePlayer(Vector2 direction)
     {
+        if ((direction.x * moveSpeed < 0 && facingRight) || (direction.x * moveSpeed > 0 && !facingRight)) FlipFace();
+        
         rb.AddForce(direction.x * moveSpeed * Vector2.right);
 
         if (Mathf.Abs(rb.velocity.x) > maxSpeed)
