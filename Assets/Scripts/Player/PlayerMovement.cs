@@ -60,11 +60,11 @@ public class PlayerMovement : MonoBehaviour
         {
             if (Input.GetKeyDown(KeyCode.RightArrow))
             {
-                dirX = moveSpeed;
+                dirX = 1;
             }
             else if (Input.GetKeyDown(KeyCode.LeftArrow))
             {
-                dirX = -moveSpeed;
+                dirX = -1;
             }
 
         }
@@ -72,11 +72,11 @@ public class PlayerMovement : MonoBehaviour
         {
             if (Input.GetKeyDown(KeyCode.A))
             {
-                dirX = -moveSpeed;
+                dirX = -1;
             }
             else if (Input.GetKeyDown(KeyCode.D))
             {
-                dirX = +moveSpeed;
+                dirX = +1;
             }
         }
         inputDir = new Vector2(dirX, 0);
@@ -85,7 +85,7 @@ public class PlayerMovement : MonoBehaviour
     
     void MovePlayer(Vector2 direction)
     {
-        rb.AddForce(direction.x * Vector2.right);
+        rb.AddForce(direction.x * moveSpeed * Vector2.right);
         
         if (Mathf.Abs(rb.velocity.x) > maxSpeed)
         {

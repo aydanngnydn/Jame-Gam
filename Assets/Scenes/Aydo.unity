@@ -396,6 +396,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 2563524760767730334, guid: 67e6747f9ce47954ca67292a7bac6e46, type: 3}
+      propertyPath: selectPlayer
+      value: Player2
+      objectReference: {fileID: 0}
     - target: {fileID: 2563524762010214291, guid: 67e6747f9ce47954ca67292a7bac6e46, type: 3}
       propertyPath: m_Name
       value: Player2
@@ -453,6 +457,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 5406038477119667323, guid: ff8a909f171c2f8459c3749b6222cd0f, type: 3}
+      propertyPath: selectPlayer
+      value: Player1
+      objectReference: {fileID: 0}
     - target: {fileID: 5406038477989629317, guid: ff8a909f171c2f8459c3749b6222cd0f, type: 3}
       propertyPath: m_Name
       value: Player1
@@ -500,6 +508,18 @@ PrefabInstance:
     - target: {fileID: 5406038477989629319, guid: ff8a909f171c2f8459c3749b6222cd0f, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5406038477989629320, guid: ff8a909f171c2f8459c3749b6222cd0f, type: 3}
+      propertyPath: jumpSpeed
+      value: 10
+      objectReference: {fileID: 0}
+    - target: {fileID: 5406038477989629320, guid: ff8a909f171c2f8459c3749b6222cd0f, type: 3}
+      propertyPath: linearDrag
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 5406038477989629321, guid: ff8a909f171c2f8459c3749b6222cd0f, type: 3}
+      propertyPath: m_LinearDrag
+      value: 3
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: ff8a909f171c2f8459c3749b6222cd0f, type: 3}
