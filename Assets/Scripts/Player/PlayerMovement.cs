@@ -18,7 +18,6 @@ public class PlayerMovement : MonoBehaviour
     [SerializeField] private float jumpSpeed = 15f;
     [SerializeField] private float jumpDelay = 0.25f;
     private float jumpTimer;
-    private bool canDoubleJump = false;
 
     [Header("Physics")]
     private Rigidbody2D rb;

@@ -128,7 +128,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 48a93a7fb98be34449d84d92391bc135, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  selectPlayer: Player1
+  selectPlayer: 
   playerBullet: {fileID: 632609147241551079, guid: 996cfbe8192e1bf4ab87d45e71736be0, type: 3}
   nextFire: 0.2
 --- !u!1 &5406038477989629317
@@ -239,8 +239,8 @@ MonoBehaviour:
   groundCheckLayer:
     serializedVersion: 2
     m_Bits: 8
-  jumpSpeed: 10
-  jumpDelay: 0.1
+  jumpSpeed: 15
+  jumpDelay: 0.25
   maxSpeed: 7
   linearDrag: 2
   gravity: 1
