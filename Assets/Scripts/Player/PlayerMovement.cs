@@ -58,34 +58,19 @@ public class PlayerMovement : MonoBehaviour
     {
         if (name == "Player2")
         {
-            if (Input.GetKeyDown(KeyCode.RightArrow))
-            {
-                dirX = moveSpeed;
-            }
-            else if (Input.GetKeyDown(KeyCode.LeftArrow))
-            {
-                dirX = -moveSpeed;
-            }
+            inputDir = new Vector2(Input.GetAxisRaw("Player2 Horizontal"), 0);
 
         }
         else if(name == "Player1")
         {
-            if (Input.GetKeyDown(KeyCode.A))
-            {
-                dirX = -moveSpeed;
-            }
-            else if (Input.GetKeyDown(KeyCode.D))
-            {
-                dirX = +moveSpeed;
-            }
+            inputDir = new Vector2(Input.GetAxisRaw("Player1 Horizontal"), 0);
         }
-        inputDir = new Vector2(dirX, 0);
         OnGroundCheck();
     }
     
     void MovePlayer(Vector2 direction)
     {
-        rb.AddForce(direction.x * Vector2.right);
+        rb.AddForce(direction.x * moveSpeed * Vector2.right);
         
         if (Mathf.Abs(rb.velocity.x) > maxSpeed)
         {
