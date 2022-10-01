@@ -80,6 +80,7 @@ public class PlayerMovement : MonoBehaviour
             }
         }
         inputDir = new Vector2(dirX, dirY);
+        OnGroundCheck();
     }
     
     void MovePlayer(Vector2 direction)
