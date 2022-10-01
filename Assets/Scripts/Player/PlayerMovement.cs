@@ -39,14 +39,14 @@ public class PlayerMovement : MonoBehaviour
     void Update()
     {
         PlayerInput();
-        if (name == "Player1" && Input.GetKeyDown(KeyCode.UpArrow))
+        if (name == "Player1" && Input.GetKeyDown(KeyCode.UpArrow) || name == "Player2" && Input.GetKeyDown(KeyCode.W))
         {
             jumpTimer = Time.time + jumpDelay;
         }
-        else if (name == "Player2" && Input.GetKeyDown(KeyCode.W))
-        {
-            jumpTimer = Time.time + jumpDelay;
-        }
+        //else if (name == "Player2" && Input.GetKeyDown(KeyCode.W))
+        //{
+        //    jumpTimer = Time.time + jumpDelay;
+        //}
     }
     void FixedUpdate()
     {
@@ -79,7 +79,7 @@ public class PlayerMovement : MonoBehaviour
                 dirX = +moveSpeed;
             }
         }
-        inputDir = new Vector2(dirX, dirY);
+        inputDir = new Vector2(dirX, 0);
         OnGroundCheck();
     }
     
@@ -118,8 +118,8 @@ public class PlayerMovement : MonoBehaviour
 
     void ModifyPhysics()
     {
-        
         bool changingDirection = (dirX > 0 && rb.velocity.x < 0) || (dirX < 0 && rb.velocity.x > 0);
+
         if (OnGroundCheck())
         {
             if (Math.Abs(dirX) < 0.4f || changingDirection)
@@ -130,8 +130,7 @@ public class PlayerMovement : MonoBehaviour
             {
                 rb.drag = linearDrag * 0.8f;
             }
-
-            //rb.gravityScale = 0;
+            rb.gravityScale = 0;
         }
         else
         {
@@ -142,7 +141,7 @@ public class PlayerMovement : MonoBehaviour
             {
                 rb.gravityScale = gravity * fallMultiplier;
             }
-            else if (rb.velocity.y > 0 && !Input.GetKey(KeyCode.UpArrow))
+            else if (rb.velocity.y > 0 && (name == "Player1" && !Input.GetKey(KeyCode.W) || name == "Player2" && !Input.GetKey(KeyCode.UpArrow)))
             {
                 rb.gravityScale = gravity * (fallMultiplier / 2);
             }

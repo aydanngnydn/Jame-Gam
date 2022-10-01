@@ -167,6 +167,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 48a93a7fb98be34449d84d92391bc135, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  selectPlayer: Player1
   playerBullet: {fileID: 632609147241551079, guid: 996cfbe8192e1bf4ab87d45e71736be0, type: 3}
   nextFire: 0.2
 --- !u!1 &685615589
@@ -184,7 +185,7 @@ GameObject:
   - component: {fileID: 685615594}
   - component: {fileID: 685615595}
   m_Layer: 0
-  m_Name: Player1
+  m_Name: Player2
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -250,7 +251,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 685615589}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalPosition: {x: 1.55, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -419,7 +420,7 @@ GameObject:
   - component: {fileID: 1382213066}
   - component: {fileID: 1382213065}
   m_Layer: 0
-  m_Name: Player2
+  m_Name: Player1
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -573,7 +574,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1382213064}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalPosition: {x: -1.58, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -709,5 +710,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 48a93a7fb98be34449d84d92391bc135, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  selectPlayer: Player2
   playerBullet: {fileID: 632609147241551079, guid: 996cfbe8192e1bf4ab87d45e71736be0, type: 3}
   nextFire: 0.2
