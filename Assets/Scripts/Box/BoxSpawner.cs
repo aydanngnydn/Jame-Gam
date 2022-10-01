@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class BoxSpawner : MonoBehaviour
 {
-    [SerializeField] private float spawnTime = 10f;
+    [SerializeField] private float spawnTime = 3f;
     [SerializeField] private GameObject box;
     private float randomSpawnPoint;
     void Start()

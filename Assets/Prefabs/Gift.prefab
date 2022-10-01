@@ -12,7 +12,7 @@ GameObject:
   - component: {fileID: 607733119921745292}
   - component: {fileID: -8014670109172266031}
   - component: {fileID: 4749096901189470636}
-  - component: {fileID: -7654764892386064400}
+  - component: {fileID: 6994681025784024496}
   m_Layer: 0
   m_Name: Gift
   m_TagString: Untagged
@@ -107,7 +107,7 @@ Rigidbody2D:
   m_Interpolate: 0
   m_SleepingMode: 1
   m_CollisionDetection: 0
-  m_Constraints: 0
+  m_Constraints: 4
 --- !u!58 &4749096901189470636
 CircleCollider2D:
   m_ObjectHideFlags: 0
@@ -124,7 +124,7 @@ CircleCollider2D:
   m_Offset: {x: 0, y: 0}
   serializedVersion: 2
   m_Radius: 0.5
---- !u!114 &-7654764892386064400
+--- !u!114 &6994681025784024496
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -133,6 +133,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 2257783913361868506}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 264c91a65a1a17148989ee0b76013232, type: 3}
+  m_Script: {fileID: 11500000, guid: 680d8aed1cdddba4c9ba15ada66abecd, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  currentState: 4
