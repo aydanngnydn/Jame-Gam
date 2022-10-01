@@ -22,7 +22,6 @@ public class PlayerMovement : MonoBehaviour
     [Header("Jump")] 
     [SerializeField] private float jumpSpeed = 15f;
     [SerializeField] private float jumpDelay = 0.25f;
-    private bool jumpMode = false;
     private float jumpTimer;
 
     [Header("Physics")] 
@@ -40,22 +39,20 @@ public class PlayerMovement : MonoBehaviour
     void Update()
     {
         PlayerInput();
-        if (jumpMode && name == "Player1" && Input.GetKeyDown(KeyCode.UpArrow))
+        if (name == "Player1" && Input.GetKeyDown(KeyCode.UpArrow))
         {
             jumpTimer = Time.time + jumpDelay;
         }
-        else if (jumpMode && name == "Player2" && Input.GetKeyDown(KeyCode.W))
+        else if (name == "Player2" && Input.GetKeyDown(KeyCode.W))
         {
             jumpTimer = Time.time + jumpDelay;
         }
-        
-        if (OnGroundCheck() && jumpTimer > Time.time) Jump();
     }
-
     void FixedUpdate()
     {
-        MovePlayer(dirX);
+        MovePlayer(inputDir);
         ModifyPhysics();
+        if (OnGroundCheck() && jumpTimer > Time.time) Jump();
     }
     void PlayerInput()
     {
@@ -82,16 +79,13 @@ public class PlayerMovement : MonoBehaviour
                 dirX = +moveSpeed;
             }
         }
+        inputDir = new Vector2(dirX, dirY);
     }
     
-    void MovePlayer(float direction)
+    void MovePlayer(Vector2 direction)
     {
-        rb.AddForce(direction * Vector2.right);
-        if (!jumpMode)
-        {
-            rb.AddForce(dirY * moveSpeed * Vector2.up);
-        }
-
+        rb.AddForce(direction.x * Vector2.right);
+        
         if (Mathf.Abs(rb.velocity.x) > maxSpeed)
         {
             rb.velocity = new Vector2(Mathf.Sign(rb.velocity.x) * maxSpeed, rb.velocity.y);
@@ -100,9 +94,19 @@ public class PlayerMovement : MonoBehaviour
 
     void Jump()
     {
-        rb.velocity = new Vector2(rb.velocity.x, 0);
-        rb.AddForce(Vector2.up * jumpSpeed, ForceMode2D.Impulse);
+        //rb.velocity = new Vector2(rb.velocity.x, 0);
+        if (name == "Player1" && Input.GetKeyDown(KeyCode.W))
+        {
+            rb.AddForce(jumpSpeed * Vector2.up, ForceMode2D.Impulse);
+        }
+        
+        else if (name == "Player2" && Input.GetKeyDown(KeyCode.UpArrow))
+        {
+            Debug.Log("jump");
+            rb.AddForce(jumpSpeed * Vector2.up, ForceMode2D.Impulse);
+        }
         jumpTimer = 0;
+
     }
 
     void FlipFace()
@@ -115,7 +119,7 @@ public class PlayerMovement : MonoBehaviour
     {
         
         bool changingDirection = (dirX > 0 && rb.velocity.x < 0) || (dirX < 0 && rb.velocity.x > 0);
-        if (OnGroundCheck() && jumpMode)
+        if (OnGroundCheck())
         {
             if (Math.Abs(dirX) < 0.4f || changingDirection)
             {
@@ -128,7 +132,7 @@ public class PlayerMovement : MonoBehaviour
 
             //rb.gravityScale = 0;
         }
-        else if (jumpMode)
+        else
         {
             rb.gravityScale = gravity;
             rb.drag = linearDrag;
@@ -141,11 +145,6 @@ public class PlayerMovement : MonoBehaviour
             {
                 rb.gravityScale = gravity * (fallMultiplier / 2);
             }
-        }
-        else
-        {
-            rb.drag = linearDrag;
-            //rb.gravityScale = 0;
         }
     }
 
