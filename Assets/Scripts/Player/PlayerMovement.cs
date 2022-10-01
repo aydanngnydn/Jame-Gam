@@ -40,9 +40,23 @@ public class PlayerMovement : MonoBehaviour
     void Update()
     {
         PlayerInput();
-        MovePlayer(dirX);
+        if (jumpMode && name == "Player1" && Input.GetKeyDown(KeyCode.UpArrow))
+        {
+            jumpTimer = Time.time + jumpDelay;
+        }
+        else if (jumpMode && name == "Player2" && Input.GetKeyDown(KeyCode.W))
+        {
+            jumpTimer = Time.time + jumpDelay;
+        }
+        
+        if (isPlayerGrounded && jumpTimer > Time.time) Jump();
     }
 
+    void FixedUpdate()
+    {
+        MovePlayer(dirX);
+        ModifyPhysics();
+    }
     void PlayerInput()
     {
         if (name == "Player1")
@@ -75,6 +89,13 @@ public class PlayerMovement : MonoBehaviour
         rb.AddForce(direction * Vector2.right);
     }
 
+    void Jump()
+    {
+        rb.velocity = new Vector2(rb.velocity.x, 0);
+        rb.AddForce(Vector2.up * jumpSpeed, ForceMode2D.Impulse);
+        jumpTimer = 0;
+    }
+
     void FlipFace()
     {
         facingRight = !facingRight;
@@ -96,7 +117,7 @@ public class PlayerMovement : MonoBehaviour
                 rb.drag = linearDrag * 0.8f;
             }
 
-            rb.gravityScale = 0;
+            //rb.gravityScale = 0;
         }
         else if (jumpMode)
         {
@@ -115,7 +136,7 @@ public class PlayerMovement : MonoBehaviour
         else
         {
             rb.drag = linearDrag;
-            rb.gravityScale = 0;
+            //rb.gravityScale = 0;
         }
     }
 }
