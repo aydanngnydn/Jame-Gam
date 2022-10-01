@@ -1,9 +1,5 @@
 using System;
-using System.Collections;
-using System.Collections.Generic;
-using UnityEditor.Experimental.GraphView;
 using UnityEngine;
-
 
 public class PlayerMovement : MonoBehaviour
 {
@@ -11,7 +7,6 @@ public class PlayerMovement : MonoBehaviour
     private Vector2 inputDir;
     private bool facingRight = true;
     [SerializeField] private float moveSpeed;
-    private float dirY, dirX;
 
     [Header("Ground Check")]
     private bool isPlayerGrounded;
