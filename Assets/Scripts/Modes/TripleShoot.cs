@@ -24,15 +24,19 @@ public class TripleShoot : MonoBehaviour
 
         if ((Input.GetKeyDown(KeyCode.T) && selectPlayer == "Player1" || Input.GetKeyDown(KeyCode.Keypad1) && selectPlayer == "Player2") && myTime > nextFire)
         {
-            Debug.Log("triple");
+            
             nextFire = myTime + fireDelta;
-            int x = -15;
+            float sign = GetComponentInParent<Transform>().transform.rotation.y <= 0 ? -1 : +1;
+            float rot = sign * 15;
+            
+            
             bullets = new GameObject[3];
            
+            
             for (int i = 0; i < bullets.Length; i++)
             {
-                Instantiate(bulletPrefab, transform.position, Quaternion.Euler(new Vector3(0, 0, x)));
-                x += 15;
+                Instantiate(bulletPrefab, transform.position, Quaternion.Euler(new Vector3(0, 0, rot)));
+                rot += sign * 15;
             }
             
             nextFire = nextFire - myTime;

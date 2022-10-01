@@ -20,7 +20,7 @@ public class UpgradeManager : MonoBehaviour
         GameObject gameObject = collision.gameObject;
         if (gameObject.TryGetComponent(out BoxType box))
         {
-            defaultMode.enabled = false;
+            
             
             switch (box.currentState)
             {
@@ -31,6 +31,7 @@ public class UpgradeManager : MonoBehaviour
                case States.jump:
                    break;
                case States.triple:
+                   defaultMode.enabled = false;
                    GetComponentInChildren<TripleShoot>().enabled = true;
                    break;
             }
