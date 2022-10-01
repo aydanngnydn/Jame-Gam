@@ -98,6 +98,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   bulletDamage: 10
-  bulletSpeed: 5
+  bulletSpeed: 10
   destroyEffect: {fileID: 0}
   destroyTime: 0.1
