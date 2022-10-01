@@ -40,12 +40,26 @@ public class PlayerMovement : MonoBehaviour
     void Update()
     {
         PlayerInput();
-        MovePlayer(dirX);
+        if (jumpMode && name == "Player1" && Input.GetKeyDown(KeyCode.UpArrow))
+        {
+            jumpTimer = Time.time + jumpDelay;
+        }
+        else if (jumpMode && name == "Player2" && Input.GetKeyDown(KeyCode.W))
+        {
+            jumpTimer = Time.time + jumpDelay;
+        }
+        
+        if (OnGroundCheck() && jumpTimer > Time.time) Jump();
     }
 
+    void FixedUpdate()
+    {
+        MovePlayer(dirX);
+        ModifyPhysics();
+    }
     void PlayerInput()
     {
-        if (name == "Player1")
+        if (name == "Player2")
         {
             if (Input.GetKeyDown(KeyCode.RightArrow))
             {
@@ -57,7 +71,7 @@ public class PlayerMovement : MonoBehaviour
             }
 
         }
-        else if(name == "Player2")
+        else if(name == "Player1")
         {
             if (Input.GetKeyDown(KeyCode.A))
             {
@@ -73,6 +87,22 @@ public class PlayerMovement : MonoBehaviour
     void MovePlayer(float direction)
     {
         rb.AddForce(direction * Vector2.right);
+        if (!jumpMode)
+        {
+            rb.AddForce(dirY * moveSpeed * Vector2.up);
+        }
+
+        if (Mathf.Abs(rb.velocity.x) > maxSpeed)
+        {
+            rb.velocity = new Vector2(Mathf.Sign(rb.velocity.x) * maxSpeed, rb.velocity.y);
+        }
+    }
+
+    void Jump()
+    {
+        rb.velocity = new Vector2(rb.velocity.x, 0);
+        rb.AddForce(Vector2.up * jumpSpeed, ForceMode2D.Impulse);
+        jumpTimer = 0;
     }
 
     void FlipFace()
@@ -85,7 +115,7 @@ public class PlayerMovement : MonoBehaviour
     {
         
         bool changingDirection = (dirX > 0 && rb.velocity.x < 0) || (dirX < 0 && rb.velocity.x > 0);
-        if (isPlayerGrounded && jumpMode)
+        if (OnGroundCheck() && jumpMode)
         {
             if (Math.Abs(dirX) < 0.4f || changingDirection)
             {
@@ -96,7 +126,7 @@ public class PlayerMovement : MonoBehaviour
                 rb.drag = linearDrag * 0.8f;
             }
 
-            rb.gravityScale = 0;
+            //rb.gravityScale = 0;
         }
         else if (jumpMode)
         {
@@ -115,7 +145,23 @@ public class PlayerMovement : MonoBehaviour
         else
         {
             rb.drag = linearDrag;
-            rb.gravityScale = 0;
+            //rb.gravityScale = 0;
         }
+    }
+
+    bool OnGroundCheck()
+    {
+        isPlayerGrounded =
+            Physics2D.Raycast(transform.position + colliderOffset, Vector2.down, groundCheckDistance,
+                groundCheckLayer) || Physics2D.Raycast(transform.position - colliderOffset, Vector2.down,
+                groundCheckDistance, groundCheckLayer);
+        return isPlayerGrounded;
+    }
+
+    private void OnDrawGizmos()
+    {
+        Gizmos.color = Color.cyan;
+        Gizmos.DrawLine(transform.position + colliderOffset, transform.position + colliderOffset + (Vector3.down * groundCheckDistance));
+        Gizmos.DrawLine(transform.position - colliderOffset, transform.position - colliderOffset + (Vector3.down * groundCheckDistance));
     }
 }
