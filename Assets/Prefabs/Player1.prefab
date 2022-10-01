@@ -149,7 +149,8 @@ MonoBehaviour:
   - {fileID: 0}
   - {fileID: 0}
   bulletPrefab: {fileID: 632609147241551079, guid: 996cfbe8192e1bf4ab87d45e71736be0, type: 3}
-  bulletSpawnDuration: 1
+  selectPlayer: Player1
+  nextFire: 0.2
 --- !u!1 &5406038477989629317
 GameObject:
   m_ObjectHideFlags: 0

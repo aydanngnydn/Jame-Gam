@@ -37,6 +37,6 @@ public class BoxType : MonoBehaviour
     
     public void DestroyBox()
     {
-        Destroy(this);//bakılacak
+        Destroy(gameObject);
     }
 }

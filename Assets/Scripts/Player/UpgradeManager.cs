@@ -13,9 +13,10 @@ public class UpgradeManager : MonoBehaviour
         defaultMode = GetComponentInChildren<BulletSpawner>();
     }
 
-    private void OnCollisionEnter(Collision collision)
+    
+    
+    private void OnCollisionEnter2D(Collision2D collision)
     {
-        Debug.Log("1");
         GameObject gameObject = collision.gameObject;
         if (gameObject.TryGetComponent(out BoxType box))
         {
@@ -30,7 +31,7 @@ public class UpgradeManager : MonoBehaviour
                case States.jump:
                    break;
                case States.triple:
-                   gameObject.GetComponentInParent<TripleShoot>(enabled);
+                   GetComponentInChildren<TripleShoot>().enabled = true;
                    break;
             }
             box.DestroyBox();
