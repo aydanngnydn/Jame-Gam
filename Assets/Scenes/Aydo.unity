@@ -202,7 +202,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 479275203}
-  m_Enabled: 0
+  m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: b5202d63d0f84284ca3300c483f47043, type: 3}
   m_Name: 
@@ -215,6 +215,7 @@ MonoBehaviour:
   selectPlayer: Player2
   nextFire: 0.2
   bulletSpawner: {fileID: 479275209}
+  upgradeManager: {fileID: 1382213065}
 --- !u!114 &479275209 stripped
 MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 2563524760767730334, guid: 67e6747f9ce47954ca67292a7bac6e46, type: 3}
@@ -231,6 +232,17 @@ GameObject:
   m_CorrespondingSourceObject: {fileID: 5406038477989629317, guid: ff8a909f171c2f8459c3749b6222cd0f, type: 3}
   m_PrefabInstance: {fileID: 5406038477583672416}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &685615590 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 2787875693863046111, guid: ff8a909f171c2f8459c3749b6222cd0f, type: 3}
+  m_PrefabInstance: {fileID: 5406038477583672416}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 685615589}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 75ed5255b8fbbba45a9d77c204af8cb6, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &1120126448
 GameObject:
   m_ObjectHideFlags: 0
@@ -294,6 +306,17 @@ GameObject:
   m_CorrespondingSourceObject: {fileID: 2563524762010214291, guid: 67e6747f9ce47954ca67292a7bac6e46, type: 3}
   m_PrefabInstance: {fileID: 2563524760708037211}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &1382213065 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 5116123440023661348, guid: 67e6747f9ce47954ca67292a7bac6e46, type: 3}
+  m_PrefabInstance: {fileID: 2563524760708037211}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1382213064}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 75ed5255b8fbbba45a9d77c204af8cb6, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &1447211568
 GameObject:
   m_ObjectHideFlags: 0
@@ -588,6 +611,14 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 1961969271047791942, guid: ff8a909f171c2f8459c3749b6222cd0f, type: 3}
+      propertyPath: m_Enabled
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1961969271047791942, guid: ff8a909f171c2f8459c3749b6222cd0f, type: 3}
+      propertyPath: upgradeManager
+      value: 
+      objectReference: {fileID: 685615590}
     - target: {fileID: 5406038477989629317, guid: ff8a909f171c2f8459c3749b6222cd0f, type: 3}
       propertyPath: m_Name
       value: Player1

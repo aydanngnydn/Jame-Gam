@@ -68,6 +68,7 @@ MonoBehaviour:
   selectPlayer: Player1
   nextFire: 0.2
   bulletSpawner: {fileID: 5406038477119667323}
+  upgradeManager: {fileID: 2787875693863046111}
 --- !u!1 &5406038477989629317
 GameObject:
   m_ObjectHideFlags: 0
@@ -225,7 +226,6 @@ MonoBehaviour:
     m_Bits: 8
   jumpSpeed: 10
   jumpDelay: 0.25
-  doubleJumpMode: 0
   maxSpeed: 7
   linearDrag: 3
   gravity: 1

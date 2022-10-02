@@ -10,14 +10,9 @@ public class UpgradeManager : MonoBehaviour
     private BulletSpawner defaultMode;
 
     public event Action OnDoubleJumpUpgrade;
+    public event Action OnTripleShootUpgrade;
 
-    private void Awake()
-    {
-        defaultMode = GetComponentInChildren<BulletSpawner>();
-    }
-
-    
-    
+   
     private void OnCollisionEnter2D(Collision2D collision)
     {
         GameObject gameObject = collision.gameObject;
@@ -33,8 +28,8 @@ public class UpgradeManager : MonoBehaviour
                     OnDoubleJumpUpgrade?.Invoke();
                    break;
                case States.triple:
-                   defaultMode.enabled = false;
-                   GetComponentInChildren<TripleShoot>().enabled = true;
+                   OnTripleShootUpgrade?.Invoke();
+                   
                    break;
             }
             box.DestroyBox();

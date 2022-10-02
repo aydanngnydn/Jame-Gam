@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -8,16 +9,33 @@ public class TripleShoot : MonoBehaviour
     [SerializeField] private GameObject bulletPrefab;
     [SerializeField] private string selectPlayer;
     [SerializeField] private float nextFire = 0.2F;
+    [SerializeField] private BulletSpawner bulletSpawner;
     private float myTime = 0.0F;
     private bool isShootAvailable, timePassed = false;
     private float fireDelta = 0.2F;
-    [SerializeField] private BulletSpawner bulletSpawner;
+    [SerializeField] UpgradeManager upgradeManager;
+
+  
+    private void OnEnable()
+    {
+        upgradeManager.OnTripleShootUpgrade += ChangeTripleMode;
+    }
+
+    private void OnDisable()
+    {
+        upgradeManager.OnTripleShootUpgrade -= ChangeTripleMode;
+    }
+
     
+
     private void Update()
     {
-        isShootAvailable = true;
-        SpawnTripleBullet();
-        if (timePassed)
+        if (!timePassed)
+        {
+            bulletSpawner.enabled = false;
+            SpawnTripleBullet();
+        }
+        else if (timePassed)
         {
             bulletSpawner.enabled = true;
             this.enabled = false;
@@ -26,11 +44,8 @@ public class TripleShoot : MonoBehaviour
 
     void SpawnTripleBullet()
     {
-        StartCoroutine(ChangeBool());
-        
-       if(!timePassed){
             myTime += Time.deltaTime;
-
+          
             if ((Input.GetKeyDown(KeyCode.T) && selectPlayer == "Player1" ||
                  Input.GetKeyDown(KeyCode.Keypad1) && selectPlayer == "Player2") && myTime > nextFire)
             {
@@ -49,16 +64,22 @@ public class TripleShoot : MonoBehaviour
                 nextFire = nextFire - myTime;
 
                 myTime = 0f;
+
             }
-        }
     }
 
-    private IEnumerator ChangeBool()
+    void ChangeTripleMode()
+    {
+        StartCoroutine(TimeCount());
+    }
+
+    private IEnumerator TimeCount()
     {
         while (true)
         {
-            yield return new WaitForSeconds(2);
-            timePassed = true;
+            timePassed = !timePassed;
+            yield return new WaitForSeconds(2f);
+            timePassed = !timePassed;
         }
     }
 }
