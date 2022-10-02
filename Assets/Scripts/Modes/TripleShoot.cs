@@ -13,7 +13,6 @@ public class TripleShoot : MonoBehaviour
     private float myTime = 0.0F;
     private bool isShootAvailable, timePassed = false;
     private float fireDelta = 0.2F;
-    [SerializeField] UpgradeManager upgradeManager;
 
     private void Update()
     {
@@ -45,19 +44,4 @@ public class TripleShoot : MonoBehaviour
 
             }
     }
-
-    // void ChangeTripleMode()
-    // {
-    //     StartCoroutine(TimeCount());
-    // }
-    //
-    // private IEnumerator TimeCount()
-    // {
-    //     while (true)
-    //     {
-    //         timePassed = !timePassed;
-    //         yield return new WaitForSeconds(2f);
-    //         timePassed = !timePassed;
-    //     }
-    // }
 }
