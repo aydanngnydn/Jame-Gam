@@ -36,15 +36,6 @@ public class PlayerMovement : MonoBehaviour
 
     #endregion
 
-    private void OnEnable()
-    {
-        upgradeManager.OnDoubleJumpUpgrade += HandleJumpMode;
-    }
-
-    private void OnDisable()
-    {
-        upgradeManager.OnDoubleJumpUpgrade -= HandleJumpMode;
-    }
 
     private void Awake()
     {

@@ -15,31 +15,9 @@ public class TripleShoot : MonoBehaviour
     private float fireDelta = 0.2F;
     [SerializeField] UpgradeManager upgradeManager;
 
-  
-    private void OnEnable()
-    {
-        upgradeManager.OnTripleShootUpgrade += ChangeTripleMode;
-    }
-
-    private void OnDisable()
-    {
-        upgradeManager.OnTripleShootUpgrade -= ChangeTripleMode;
-    }
-
-    
-
     private void Update()
     {
-        if (!timePassed)
-        {
-            bulletSpawner.enabled = false;
-            SpawnTripleBullet();
-        }
-        else if (timePassed)
-        {
-            bulletSpawner.enabled = true;
-            this.enabled = false;
-        }
+        SpawnTripleBullet();
     }
 
     void SpawnTripleBullet()
@@ -68,18 +46,18 @@ public class TripleShoot : MonoBehaviour
             }
     }
 
-    void ChangeTripleMode()
-    {
-        StartCoroutine(TimeCount());
-    }
-
-    private IEnumerator TimeCount()
-    {
-        while (true)
-        {
-            timePassed = !timePassed;
-            yield return new WaitForSeconds(2f);
-            timePassed = !timePassed;
-        }
-    }
+    // void ChangeTripleMode()
+    // {
+    //     StartCoroutine(TimeCount());
+    // }
+    //
+    // private IEnumerator TimeCount()
+    // {
+    //     while (true)
+    //     {
+    //         timePassed = !timePassed;
+    //         yield return new WaitForSeconds(2f);
+    //         timePassed = !timePassed;
+    //     }
+    // }
 }
