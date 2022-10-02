@@ -32,16 +32,18 @@ public class PlayerMovement : MonoBehaviour
     [SerializeField] private float fallMultiplier = 4f;
     private Rigidbody2D rb;
 
+    private Coroutine anan;
+
     #endregion
 
     private void OnEnable()
     {
-        upgradeManager.OnDoubleJumpUpgrade += ChangeJumpMode;
+        upgradeManager.OnDoubleJumpUpgrade += HandleJumpMode;
     }
 
     private void OnDisable()
     {
-        upgradeManager.OnDoubleJumpUpgrade -= ChangeJumpMode;
+        upgradeManager.OnDoubleJumpUpgrade -= HandleJumpMode;
     }
 
     private void Awake()
@@ -169,17 +171,29 @@ public class PlayerMovement : MonoBehaviour
         }
     }
 
-    private void ChangeJumpMode()
+    private void HandleJumpMode()
     {
-        Debug.Log("k");
-        StartCoroutine(ANAN());
-    }
+        if(anan != null)
+        {
+            StopCoroutine(anan);
+        }
+        anan = StartCoroutine(ChangeMode());
 
-    private IEnumerator ANAN()
-    {
-            doubleJumpMode = !doubleJumpMode;
-            yield return new WaitForSeconds(5f);
-            doubleJumpMode = !doubleJumpMode;
+        IEnumerator ChangeMode()
+        {
+            if (!doubleJumpMode)
+            {
+                doubleJumpMode = !doubleJumpMode;
+                yield return new WaitForSeconds(5f);
+                doubleJumpMode = !doubleJumpMode;
+            }
+            else
+            {
+                yield return new WaitForSeconds(5f);
+                doubleJumpMode= !doubleJumpMode;
+            }
+            anan = null;
+        }
     }
 
     #region Checks and Gizmos
