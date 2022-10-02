@@ -13,7 +13,7 @@ public class BoxType : MonoBehaviour
     public States currentState;
     private void Awake()
     {
-        int rand = Random.Range(1, 4);
+        int rand = 2;//Random.Range(1, 4);
         
         switch (rand)
         {

@@ -27,7 +27,7 @@ public class TripleShoot : MonoBehaviour
                  Input.GetKeyDown(KeyCode.Keypad1) && selectPlayer == "Player2") && myTime > nextFire)
             {
                 nextFire = myTime + fireDelta;
-                float rot = GetComponentInParent<Transform>().transform.rotation.y == 0 ? 0 : 150;
+                float rot = GetComponentInParent<Transform>().transform.rotation.y == 0 ? -15 : 165;
 
                 bullets = new GameObject[3];
 
