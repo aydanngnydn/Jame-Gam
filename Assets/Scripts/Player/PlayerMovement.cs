@@ -1,4 +1,5 @@
 using System;
+using System.Collections;
 using UnityEngine;
 
 public class PlayerMovement : MonoBehaviour
@@ -20,7 +21,7 @@ public class PlayerMovement : MonoBehaviour
     [SerializeField] private float jumpSpeed = 15f;
     [SerializeField] private float jumpDelay = 0.25f;
     private float jumpTimer;
-    public bool doubleJumpMode = false;
+    private bool doubleJumpMode = false;
     private bool canDoubleJump = false;
     private UpgradeManager upgradeManager;
 
@@ -46,12 +47,13 @@ public class PlayerMovement : MonoBehaviour
     private void Awake()
     {
         rb = GetComponent<Rigidbody2D>();
-
+        upgradeManager = GetComponent<UpgradeManager>();
     }
 
     private void Update()
     {
         PlayerInput();
+
         if (name == "Player1" && Input.GetKeyDown(KeyCode.W) || name == "Player2" && Input.GetKeyDown(KeyCode.UpArrow))
         {
             jumpTimer = Time.time + jumpDelay;
@@ -70,11 +72,11 @@ public class PlayerMovement : MonoBehaviour
         }
         else
         {
-            if(OnGroundCheck())
+            if (OnGroundCheck())
             {
                 canDoubleJump = true;
             }
-            if(jumpTimer > Time.time)
+            if (jumpTimer > Time.time)
             {
                 if (isPlayerGrounded)
                 {
@@ -169,7 +171,15 @@ public class PlayerMovement : MonoBehaviour
 
     private void ChangeJumpMode()
     {
-        doubleJumpMode = !doubleJumpMode;
+        Debug.Log("k");
+        StartCoroutine(ANAN());
+    }
+
+    private IEnumerator ANAN()
+    {
+            doubleJumpMode = !doubleJumpMode;
+            yield return new WaitForSeconds(5f);
+            doubleJumpMode = !doubleJumpMode;
     }
 
     #region Checks and Gizmos

@@ -21,7 +21,7 @@ public class TripleShoot : MonoBehaviour
         {
             bulletSpawner.enabled = true;
             this.enabled = false;
-            sta
+            //sta
         }
     }
 
