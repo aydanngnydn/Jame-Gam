@@ -3,6 +3,8 @@ using UnityEngine;
 
 public class PlayerMovement : MonoBehaviour
 {
+    #region  Fields
+
     [Header("Horizontal Movement")]
     private Vector2 inputDir;
     private bool facingRight = true;
@@ -18,21 +20,36 @@ public class PlayerMovement : MonoBehaviour
     [SerializeField] private float jumpSpeed = 15f;
     [SerializeField] private float jumpDelay = 0.25f;
     private float jumpTimer;
+    public bool doubleJumpMode = false;
     private bool canDoubleJump = false;
+    private UpgradeManager upgradeManager;
 
     [Header("Physics")]
-    private Rigidbody2D rb;
     [SerializeField] private float maxSpeed = 7f;
     [SerializeField] private float linearDrag = 2f;
     [SerializeField] private float gravity = 1;
     [SerializeField] private float fallMultiplier = 4f;
+    private Rigidbody2D rb;
+
+    #endregion
+
+    private void OnEnable()
+    {
+        upgradeManager.OnDoubleJumpUpgrade += ChangeJumpMode;
+    }
+
+    private void OnDisable()
+    {
+        upgradeManager.OnDoubleJumpUpgrade -= ChangeJumpMode;
+    }
 
     private void Awake()
     {
         rb = GetComponent<Rigidbody2D>();
+
     }
 
-    void Update()
+    private void Update()
     {
         PlayerInput();
         if (name == "Player1" && Input.GetKeyDown(KeyCode.W) || name == "Player2" && Input.GetKeyDown(KeyCode.UpArrow))
@@ -40,31 +57,62 @@ public class PlayerMovement : MonoBehaviour
             jumpTimer = Time.time + jumpDelay;
         }
     }
-    void FixedUpdate()
+
+    private void FixedUpdate()
     {
         MovePlayer(inputDir);
+
         ModifyPhysics();
-        if (OnGroundCheck() && jumpTimer > Time.time) Jump();
+
+        if (!doubleJumpMode)
+        {
+            if (OnGroundCheck() && jumpTimer > Time.time) Jump();
+        }
+        else
+        {
+            if(OnGroundCheck())
+            {
+                canDoubleJump = true;
+            }
+            if(jumpTimer > Time.time)
+            {
+                if (isPlayerGrounded)
+                {
+                    Jump();
+                }
+                else
+                {
+                    if (canDoubleJump)
+                    {
+                        Jump();
+                        canDoubleJump = false;
+                    }
+                }
+            }
+        }
+
     }
-    void PlayerInput()
+
+    private void PlayerInput()
     {
-        if (name == "Player2")
+        if (name == "Player1")
+        {
+            inputDir = new Vector2(Input.GetAxisRaw("Player1 Horizontal"), 0);
+        }
+
+        else if (name == "Player2")
         {
             inputDir = new Vector2(Input.GetAxisRaw("Player2 Horizontal"), 0);
 
         }
-        else if (name == "Player1")
-        {
-            inputDir = new Vector2(Input.GetAxisRaw("Player1 Horizontal"), 0);
-        }
-        
+
         OnGroundCheck();
     }
 
-    void MovePlayer(Vector2 direction)
+    private void MovePlayer(Vector2 direction)
     {
         if ((direction.x * moveSpeed < 0 && facingRight) || (direction.x * moveSpeed > 0 && !facingRight)) FlipFace();
-        
+
         rb.AddForce(direction.x * moveSpeed * Vector2.right);
 
         if (Mathf.Abs(rb.velocity.x) > maxSpeed)
@@ -73,22 +121,21 @@ public class PlayerMovement : MonoBehaviour
         }
     }
 
-    void Jump()
+    private void Jump()
     {
         rb.velocity = new Vector2(rb.velocity.x, 0);
 
         rb.AddForce(jumpSpeed * Vector2.up, ForceMode2D.Impulse);
         jumpTimer = 0;
-
     }
 
-    void FlipFace()
+    private void FlipFace()
     {
         facingRight = !facingRight;
         transform.rotation = Quaternion.Euler(0, facingRight ? 0 : 180, 0);
     }
 
-    void ModifyPhysics()
+    private void ModifyPhysics()
     {
         bool changingDirection = (inputDir.x > 0 && rb.velocity.x < 0) || (inputDir.x < 0 && rb.velocity.x > 0);
 
@@ -120,6 +167,12 @@ public class PlayerMovement : MonoBehaviour
         }
     }
 
+    private void ChangeJumpMode()
+    {
+        doubleJumpMode = !doubleJumpMode;
+    }
+
+    #region Checks and Gizmos
     private bool OnGroundCheck()
     {
         isPlayerGrounded =
@@ -135,4 +188,5 @@ public class PlayerMovement : MonoBehaviour
         Gizmos.DrawLine(transform.position + colliderOffset, transform.position + colliderOffset + (Vector3.down * groundCheckDistance));
         Gizmos.DrawLine(transform.position - colliderOffset, transform.position - colliderOffset + (Vector3.down * groundCheckDistance));
     }
+    #endregion
 }
