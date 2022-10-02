@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class UpgradeManager : MonoBehaviour
 {
+    [SerializeField] private Animator boxAnim;
     private PlayerHealth healthMode;
     private BulletSpawner defaultMode;
     private TripleShoot tripleMode;
@@ -28,6 +29,8 @@ public class UpgradeManager : MonoBehaviour
         GameObject gameObject = collision.gameObject;
         if (gameObject.TryGetComponent(out BoxType box))
         {
+            if (box != null)
+                boxAnim.SetTrigger("BoxOpened");
             switch (box.currentState)
             {
                 case States.health:
@@ -64,6 +67,7 @@ public class UpgradeManager : MonoBehaviour
         {
             StopCoroutine(doubleJumpRoutine);
         }
+
         doubleJumpRoutine = StartCoroutine(HandleDoubleJumpMode());
 
         IEnumerator HandleDoubleJumpMode()
@@ -84,11 +88,11 @@ public class UpgradeManager : MonoBehaviour
 
     void TripleShoot()
     {
-        if(tripleRoutine != null)
+        if (tripleRoutine != null)
         {
             StopCoroutine(tripleRoutine);
         }
-        
+
         tripleRoutine = StartCoroutine(HandleTripleMode());
 
         IEnumerator HandleTripleMode()
