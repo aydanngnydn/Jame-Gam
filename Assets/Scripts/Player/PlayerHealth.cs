@@ -3,14 +3,13 @@ using UnityEngine;
 
 public class PlayerHealth : MonoBehaviour
 {
-    [SerializeField] private int contactDamage;
     [SerializeField] private int maxHealth;
     [SerializeField] private int currentHealth;
 
     [SerializeField] private GameObject bulletDestroyEffect;
     [SerializeField] private float bulletDestroyTime;
 
-    private Collider2D collider;
+    private Collider2D collider2D;
 
     public event Action OnHealthDecrease;
     public event Action OnPlayerDeath;
@@ -27,7 +26,7 @@ public class PlayerHealth : MonoBehaviour
 
     private void Awake()
     {
-        collider = GetComponent<Collider2D>();
+        collider2D = GetComponent<Collider2D>();
     }
 
     public void DecraseHealth(int damage)
@@ -37,7 +36,7 @@ public class PlayerHealth : MonoBehaviour
         if (!AliveCheck())
         {
             OnPlayerDeath?.Invoke();
-            Destroy(collider);
+            Destroy(collider2D);
             Destroy(gameObject, 0.5f);
         }
         else

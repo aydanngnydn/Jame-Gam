@@ -9,7 +9,7 @@ public class TripleShoot : MonoBehaviour
     [SerializeField] private GameObject bulletPrefab;
     [SerializeField] private string selectPlayer;
     [SerializeField] private float nextFire = 0.2F;
-    [SerializeField] private BulletSpawner bulletSpawner;
+    [SerializeField] private DefaultShoot bulletSpawner;
     private float myTime = 0.0F;
     private bool isShootAvailable, timePassed = false;
     private float fireDelta = 0.2F;

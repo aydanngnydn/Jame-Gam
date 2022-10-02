@@ -4,22 +4,22 @@ using UnityEngine;
 
 public class UpgradeManager : MonoBehaviour
 {
-    [SerializeField] private Animator boxAnim;
+    private Animator boxAnim;
     private PlayerHealth healthMode;
-    private BulletSpawner defaultMode;
+    private DefaultShoot defaultMode;
     private TripleShoot tripleMode;
     private PlayerMovement playerMovement;
 
     private bool isTripleMode = false;
 
-    private Coroutine tripleRoutine;
-    private Coroutine doubleJumpRoutine;
+    private Coroutine TripleRoutine;
+    private Coroutine DoubleJumpRoutine;
 
 
     private void Awake()
     {
         healthMode = GetComponent<PlayerHealth>();
-        defaultMode = GetComponentInChildren<BulletSpawner>();
+        defaultMode = GetComponentInChildren<DefaultShoot>();
         tripleMode = GetComponentInChildren<TripleShoot>();
         playerMovement = GetComponent<PlayerMovement>();
     }
@@ -27,22 +27,24 @@ public class UpgradeManager : MonoBehaviour
     private void OnCollisionEnter2D(Collision2D collision)
     {
         GameObject gameObject = collision.gameObject;
-        if (gameObject.TryGetComponent(out BoxType box))
+
+        if (gameObject.TryGetComponent(out UpgradeBox box))
         {
-            if (box != null)
-                boxAnim.SetTrigger("BoxOpened");
+            boxAnim = box.GetComponent<Animator>();
+            boxAnim.SetTrigger("BoxOpen");
+
             switch (box.currentState)
             {
-                case States.health:
+                case UpgradeTypes.HealthIncrease:
                     HealthMode();
                     break;
-                case States.damage:
+                case UpgradeTypes.HealthDecrease:
                     DamageMode();
                     break;
-                case States.jump:
+                case UpgradeTypes.DoubleJump:
                     DoubleJump();
                     break;
-                case States.triple:
+                case UpgradeTypes.TripleShoot:
                     TripleShoot();
                     break;
             }
@@ -63,12 +65,12 @@ public class UpgradeManager : MonoBehaviour
 
     private void DoubleJump()
     {
-        if (doubleJumpRoutine != null)
+        if (DoubleJumpRoutine != null)
         {
-            StopCoroutine(doubleJumpRoutine);
+            StopCoroutine(DoubleJumpRoutine);
         }
 
-        doubleJumpRoutine = StartCoroutine(HandleDoubleJumpMode());
+        DoubleJumpRoutine = StartCoroutine(HandleDoubleJumpMode());
 
         IEnumerator HandleDoubleJumpMode()
         {
@@ -88,12 +90,12 @@ public class UpgradeManager : MonoBehaviour
 
     void TripleShoot()
     {
-        if (tripleRoutine != null)
+        if (TripleRoutine != null)
         {
-            StopCoroutine(tripleRoutine);
+            StopCoroutine(TripleRoutine);
         }
 
-        tripleRoutine = StartCoroutine(HandleTripleMode());
+        TripleRoutine = StartCoroutine(HandleTripleMode());
 
         IEnumerator HandleTripleMode()
         {

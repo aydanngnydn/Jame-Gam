@@ -1,6 +1,6 @@
 using UnityEngine;
 
-public class PlayerBullet : MonoBehaviour
+public class Bullet : MonoBehaviour
 {
     [SerializeField] private int bulletDamage;
     [SerializeField] private float bulletSpeed;
@@ -35,7 +35,7 @@ public class PlayerBullet : MonoBehaviour
 
                 DestroyBullet();
 
-                player.CreateBulletDestroyEffect(contactPoint);
+                //player.CreateBulletDestroyEffect(contactPoint);
 
             }
         }

@@ -1,6 +1,6 @@
 ﻿using UnityEngine;
 
-public class BulletSpawner : MonoBehaviour
+public class DefaultShoot : MonoBehaviour
 {
     [SerializeField] private string selectPlayer;
     [SerializeField] private GameObject playerBullet;

@@ -130,10 +130,6 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
-    - target: {fileID: 2787875693863046111, guid: ff8a909f171c2f8459c3749b6222cd0f, type: 3}
-      propertyPath: boxAnim
-      value: 
-      objectReference: {fileID: 1059771982}
     - target: {fileID: 5406038477989629317, guid: ff8a909f171c2f8459c3749b6222cd0f, type: 3}
       propertyPath: m_Name
       value: Player1
@@ -392,11 +388,6 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: a4be6f64631a83f448c5bbf986d72849, type: 3}
---- !u!95 &1059771982 stripped
-Animator:
-  m_CorrespondingSourceObject: {fileID: 3907121531934386053, guid: a4be6f64631a83f448c5bbf986d72849, type: 3}
-  m_PrefabInstance: {fileID: 797038319}
-  m_PrefabAsset: {fileID: 0}
 --- !u!1 &1120126448
 GameObject:
   m_ObjectHideFlags: 0
@@ -594,10 +585,6 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 7719015122143469518, guid: 52e8db38e9ffa0249a85a7dd0301dd20, type: 3}
-      propertyPath: boxAnim
-      value: 
-      objectReference: {fileID: 1059771982}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 52e8db38e9ffa0249a85a7dd0301dd20, type: 3}
 --- !u!1 &1968699878
@@ -678,8 +665,8 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1968699878}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0.33, y: 5.67, z: 0}
-  m_LocalScale: {x: 14.954313, y: 1, z: 1}
+  m_LocalPosition: {x: 0.0569, y: 5.67, z: 0}
+  m_LocalScale: {x: 12.107775, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
@@ -697,7 +684,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b511170efd5276140b811e53c91fe88e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  spawnTime: 1
+  spawnTime: 10
   box: {fileID: 2257783913361868506, guid: a4be6f64631a83f448c5bbf986d72849, type: 3}
 --- !u!1 &2014747524
 GameObject:

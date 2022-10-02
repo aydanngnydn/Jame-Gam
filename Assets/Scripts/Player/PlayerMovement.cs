@@ -4,8 +4,6 @@ using UnityEngine;
 
 public class PlayerMovement : MonoBehaviour
 {
-    #region  Fields
-
     [Header("Horizontal Movement")]
     [SerializeField] private float moveSpeed;
     private Vector2 inputDir;
@@ -30,9 +28,6 @@ public class PlayerMovement : MonoBehaviour
     [SerializeField] private float gravity = 1;
     [SerializeField] private float fallMultiplier = 4f;
     private Rigidbody2D rb;
-
-    #endregion
-
 
     private void Awake()
     {
