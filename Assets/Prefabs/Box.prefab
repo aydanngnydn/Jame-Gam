@@ -13,8 +13,8 @@ GameObject:
   - component: {fileID: -8014670109172266031}
   - component: {fileID: 4749096901189470636}
   - component: {fileID: 6994681025784024496}
-  m_Layer: 0
-  m_Name: Gift
+  m_Layer: 7
+  m_Name: Box
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

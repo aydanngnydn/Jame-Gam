@@ -352,7 +352,7 @@ PrefabInstance:
     - target: {fileID: 5406038477989629323, guid: ff8a909f171c2f8459c3749b6222cd0f, type: 3}
       propertyPath: bulletDestroyEffect
       value: 
-      objectReference: {fileID: 632609147241551079, guid: 996cfbe8192e1bf4ab87d45e71736be0, type: 3}
+      objectReference: {fileID: 2257783913361868506, guid: a4be6f64631a83f448c5bbf986d72849, type: 3}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: ff8a909f171c2f8459c3749b6222cd0f, type: 3}
 --- !u!114 &678035653 stripped
@@ -745,6 +745,6 @@ PrefabInstance:
     - target: {fileID: 5406038477989629323, guid: ff8a909f171c2f8459c3749b6222cd0f, type: 3}
       propertyPath: bulletDestroyEffect
       value: 
-      objectReference: {fileID: 632609147241551079, guid: 996cfbe8192e1bf4ab87d45e71736be0, type: 3}
+      objectReference: {fileID: 2257783913361868506, guid: a4be6f64631a83f448c5bbf986d72849, type: 3}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: ff8a909f171c2f8459c3749b6222cd0f, type: 3}
