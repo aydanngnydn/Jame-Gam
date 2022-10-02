@@ -178,7 +178,7 @@ Rigidbody2D:
   m_Material: {fileID: 0}
   m_Interpolate: 0
   m_SleepingMode: 1
-  m_CollisionDetection: 0
+  m_CollisionDetection: 1
   m_Constraints: 4
 --- !u!61 &5406038477989629322
 BoxCollider2D:
@@ -226,6 +226,7 @@ MonoBehaviour:
     m_Bits: 8
   jumpSpeed: 10
   jumpDelay: 0.25
+  doubleJumpMode: 0
   maxSpeed: 7
   linearDrag: 3
   gravity: 1
@@ -243,8 +244,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   contactDamage: 0
-  maxHealth: 100
-  currentHealth: 80
+  maxHealth: 5
+  currentHealth: 4
   bulletDestroyEffect: {fileID: 0}
   bulletDestroyTime: 0.2
 --- !u!114 &2787875693863046111

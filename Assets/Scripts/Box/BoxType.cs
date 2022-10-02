@@ -6,19 +6,19 @@ using UnityEngine;
 using Random = UnityEngine.Random;
 
 public enum States{
-    bomb,triple,jump,damage,defaultS
+    health,triple,jump,damage,defaultS
 }
 public class BoxType : MonoBehaviour
 {
     public States currentState;
     private void Awake()
     {
-        int rand = 2;//Random.Range(1, 4);
+        int rand = Random.Range(1, 4);
         
         switch (rand)
         {
             case 1:
-                currentState = States.bomb;
+                currentState = States.health;
                 break;
             case 2:
                 currentState = States.triple;

@@ -215,6 +215,7 @@ MonoBehaviour:
   selectPlayer: Player2
   nextFire: 0.2
   bulletSpawner: {fileID: 479275209}
+  upgradeManager: {fileID: 0}
 --- !u!114 &479275209 stripped
 MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 2563524760767730334, guid: 67e6747f9ce47954ca67292a7bac6e46, type: 3}
@@ -635,14 +636,6 @@ PrefabInstance:
     - target: {fileID: 5406038477989629319, guid: ff8a909f171c2f8459c3749b6222cd0f, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 5406038477989629321, guid: ff8a909f171c2f8459c3749b6222cd0f, type: 3}
-      propertyPath: m_Interpolate
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 5406038477989629321, guid: ff8a909f171c2f8459c3749b6222cd0f, type: 3}
-      propertyPath: m_CollisionDetection
-      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: ff8a909f171c2f8459c3749b6222cd0f, type: 3}

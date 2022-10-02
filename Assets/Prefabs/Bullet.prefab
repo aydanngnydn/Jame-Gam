@@ -11,6 +11,7 @@ GameObject:
   - component: {fileID: 6938694495978942102}
   - component: {fileID: 3380309616304383353}
   - component: {fileID: -4648820917966937499}
+  - component: {fileID: 3964213044970083283}
   m_Layer: 0
   m_Name: Bullet
   m_TagString: Untagged
@@ -97,7 +98,23 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: cac61be9fc8f3f748a95cc887aeac5bd, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  bulletDamage: 10
+  bulletDamage: 1
   bulletSpeed: 10
   destroyEffect: {fileID: 0}
   destroyTime: 0.1
+--- !u!70 &3964213044970083283
+CapsuleCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 632609147241551079}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: 0, y: 0}
+  m_Size: {x: 1.0000002, y: 2.0000005}
+  m_Direction: 0

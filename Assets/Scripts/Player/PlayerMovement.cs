@@ -7,9 +7,9 @@ public class PlayerMovement : MonoBehaviour
     #region  Fields
 
     [Header("Horizontal Movement")]
+    [SerializeField] private float moveSpeed;
     private Vector2 inputDir;
     private bool facingRight = true;
-    [SerializeField] private float moveSpeed;
 
     [Header("Ground Check")]
     private bool isPlayerGrounded;
@@ -21,9 +21,8 @@ public class PlayerMovement : MonoBehaviour
     [SerializeField] private float jumpSpeed = 15f;
     [SerializeField] private float jumpDelay = 0.25f;
     private float jumpTimer;
-    private bool doubleJumpMode = false;
     private bool canDoubleJump = false;
-    private UpgradeManager upgradeManager;
+    public bool doubleJumpMode = false;
 
     [Header("Physics")]
     [SerializeField] private float maxSpeed = 7f;
@@ -32,15 +31,12 @@ public class PlayerMovement : MonoBehaviour
     [SerializeField] private float fallMultiplier = 4f;
     private Rigidbody2D rb;
 
-    private Coroutine anan;
-
     #endregion
 
 
     private void Awake()
     {
         rb = GetComponent<Rigidbody2D>();
-        upgradeManager = GetComponent<UpgradeManager>();
     }
 
     private void Update()
@@ -159,31 +155,6 @@ public class PlayerMovement : MonoBehaviour
             {
                 rb.gravityScale = gravity * (fallMultiplier / 2);
             }
-        }
-    }
-
-    private void HandleJumpMode()
-    {
-        if(anan != null)
-        {
-            StopCoroutine(anan);
-        }
-        anan = StartCoroutine(ChangeMode());
-
-        IEnumerator ChangeMode()
-        {
-            if (!doubleJumpMode)
-            {
-                doubleJumpMode = !doubleJumpMode;
-                yield return new WaitForSeconds(5f);
-                doubleJumpMode = !doubleJumpMode;
-            }
-            else
-            {
-                yield return new WaitForSeconds(5f);
-                doubleJumpMode= !doubleJumpMode;
-            }
-            anan = null;
         }
     }
 
