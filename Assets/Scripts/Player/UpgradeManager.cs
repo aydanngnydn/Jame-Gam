@@ -20,8 +20,6 @@ public class UpgradeManager : MonoBehaviour
         GameObject gameObject = collision.gameObject;
         if (gameObject.TryGetComponent(out BoxType box))
         {
-            
-            
             switch (box.currentState)
             {
                case States.bomb:

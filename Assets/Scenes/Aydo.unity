@@ -214,6 +214,29 @@ MonoBehaviour:
   bulletPrefab: {fileID: 632609147241551079, guid: 996cfbe8192e1bf4ab87d45e71736be0, type: 3}
   selectPlayer: Player2
   nextFire: 0.2
+  bulletSpawner: {fileID: 479275209}
+--- !u!114 &479275209 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 2563524760767730334, guid: 67e6747f9ce47954ca67292a7bac6e46, type: 3}
+  m_PrefabInstance: {fileID: 2563524760708037211}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 479275203}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 48a93a7fb98be34449d84d92391bc135, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &546698701 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 5406038477119667323, guid: ff8a909f171c2f8459c3749b6222cd0f, type: 3}
+  m_PrefabInstance: {fileID: 5406038477583672416}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 48a93a7fb98be34449d84d92391bc135, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &685615589 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 5406038477989629317, guid: ff8a909f171c2f8459c3749b6222cd0f, type: 3}
@@ -584,6 +607,10 @@ PrefabInstance:
       propertyPath: selectPlayer
       value: Player1
       objectReference: {fileID: 0}
+    - target: {fileID: 1961969271047791942, guid: ff8a909f171c2f8459c3749b6222cd0f, type: 3}
+      propertyPath: bulletSpawner
+      value: 
+      objectReference: {fileID: 546698701}
     - target: {fileID: 5406038477989629317, guid: ff8a909f171c2f8459c3749b6222cd0f, type: 3}
       propertyPath: m_Name
       value: Player1
