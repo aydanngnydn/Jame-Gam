@@ -1,5 +1,5 @@
 fileFormatVersion: 2
-guid: c0ce064cfc79b1249b592c7357db79ec
+guid: 84bc3745028a3d94daeaebc6ddfb4795
 TextureImporter:
   internalIDToNameTable: []
   externalObjects: {}
@@ -152,43 +152,64 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: Player2_DefaultShoot_0
+      name: Player2_Idle_0
       rect:
         serializedVersion: 2
         x: 0
         y: 0
-        width: 27
+        width: 13
         height: 32
-      alignment: 9
-      pivot: {x: 0.25, y: 0.5}
+      alignment: 0
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: aeff30854ce1e0e4e966e4ab0fe029d8
-      internalID: -885504448
+      spriteID: 5e4af3852d60dd248b7b4308a699b219
+      internalID: -1247109303
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Player2_DefaultShoot_1
+      name: Player2_Idle_1
       rect:
         serializedVersion: 2
-        x: 29
+        x: 13
         y: 0
-        width: 27
+        width: 13
         height: 32
-      alignment: 9
-      pivot: {x: 0.25, y: 0.5}
+      alignment: 0
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 48e51a7c841af764b8ce51eb6ee50b5e
-      internalID: 1195439613
+      spriteID: 9a455c764f88c5647b6032477721232d
+      internalID: -122033691
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Player2_Idle_2
+      rect:
+        serializedVersion: 2
+        x: 26
+        y: 0
+        width: 13
+        height: 32
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: f6e8fb4abcc502a4b9289c12d4f16ce6
+      internalID: 1065245946
       vertices: []
       indices: 
       edges: []
@@ -204,8 +225,9 @@ TextureImporter:
     weights: []
     secondaryTextures: []
     nameFileIdTable:
-      Player2_DefaultShoot_0: -885504448
-      Player2_DefaultShoot_1: 1195439613
+      Player2_Idle_1: -122033691
+      Player2_Idle_0: -1247109303
+      Player2_Idle_2: 1065245946
   spritePackingTag: 
   pSDRemoveMatte: 0
   pSDShowRemoveMatteOption: 0
