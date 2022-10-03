@@ -1,20 +1,23 @@
-﻿using UnityEngine;
+﻿using System;
+using UnityEngine;
 
 public class DefaultShoot : MonoBehaviour
 {
     [SerializeField] private string selectPlayer;
     [SerializeField] private GameObject playerBullet;
     [SerializeField] private float nextFire = 0.2F;
-    [SerializeField] private AudioClip clip;
+    [SerializeField] private AudioClip shotClip;
     private float myTime = 0.0F;
     private float fireDelta = 0.2F;
 
-    void Update()
+    public event Action OnDefaultFire;
+
+    private void Update()
     {
         ShootBullets();
     }
 
-    void ShootBullets()
+    private void ShootBullets()
     {
         myTime += Time.deltaTime;
 
@@ -29,7 +32,13 @@ public class DefaultShoot : MonoBehaviour
 
             myTime = 0f;
 
-            SoundManager.Instance.PlaySound(clip);
+            HandleShootEvents();
         }
+    }
+
+    private void HandleShootEvents()
+    {
+        OnDefaultFire?.Invoke();
+        SoundManager.Instance.PlaySound(shotClip);
     }
 }
