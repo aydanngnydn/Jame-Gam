@@ -48,7 +48,6 @@ MonoBehaviour:
   selectPlayer: Player2
   playerBullet: {fileID: 632609147241551079, guid: 996cfbe8192e1bf4ab87d45e71736be0, type: 3}
   nextFire: 0.2
-  shotClip: {fileID: 8300000, guid: 8ea5298fb9972c44f85e5d025b8cab49, type: 3}
 --- !u!114 &1298836956996843879
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -251,6 +250,7 @@ MonoBehaviour:
   bulletDestroyEffect: {fileID: 0}
   bulletDestroyTime: 0.2
   winPanel: {fileID: 0}
+  scoreTextGame: {fileID: 0}
 --- !u!114 &1824130859748256633
 MonoBehaviour:
   m_ObjectHideFlags: 0

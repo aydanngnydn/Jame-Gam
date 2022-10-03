@@ -228,6 +228,8 @@ MonoBehaviour:
   currentHealth: 4
   bulletDestroyEffect: {fileID: 0}
   bulletDestroyTime: 0.2
+  winPanel: {fileID: 0}
+  scoreTextGame: {fileID: 0}
 --- !u!114 &4868223427167593104
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -320,7 +322,6 @@ MonoBehaviour:
   selectPlayer: Player1
   playerBullet: {fileID: 632609147241551079, guid: 996cfbe8192e1bf4ab87d45e71736be0, type: 3}
   nextFire: 0.2
-  shotClip: {fileID: 0}
 --- !u!114 &8179758044203263522
 MonoBehaviour:
   m_ObjectHideFlags: 0

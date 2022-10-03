@@ -1,5 +1,6 @@
 using System;
 using System.Collections;
+using TMPro;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
@@ -12,6 +13,7 @@ public class PlayerHealth : MonoBehaviour
     [SerializeField] private float bulletDestroyTime;
 
     [SerializeField] private GameObject winPanel;
+    [SerializeField] private TextMeshProUGUI scoreTextGame;
 
     private Collider2D collider2D;
 
@@ -41,8 +43,7 @@ public class PlayerHealth : MonoBehaviour
         {
             OnPlayerDeath?.Invoke();
             Destroy(collider2D);
-            
-            StartCoroutine(winScene());
+            StartCoroutine(winScene(this.gameObject.name));
         }
         else
         {
@@ -66,10 +67,12 @@ public class PlayerHealth : MonoBehaviour
         Destroy(destroyEffect, bulletDestroyTime);
     }
 
-    public IEnumerator winScene()
+    public IEnumerator winScene(string name)
     {
+        
         yield return new WaitForSeconds(1.5f);
         winPanel.SetActive(true);
+        scoreTextGame.text = name + " has won!";
         yield return new WaitForSeconds(3f);
         SceneManager.LoadScene(0);
     }

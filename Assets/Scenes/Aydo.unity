@@ -429,6 +429,14 @@ PrefabInstance:
       propertyPath: winPanel
       value: 
       objectReference: {fileID: 2075800636}
+    - target: {fileID: 700977885380591147, guid: ff8a909f171c2f8459c3749b6222cd0f, type: 3}
+      propertyPath: scoreTextGame
+      value: 
+      objectReference: {fileID: 68066775}
+    - target: {fileID: 700977885380591147, guid: ff8a909f171c2f8459c3749b6222cd0f, type: 3}
+      propertyPath: bulletDestroyEffect
+      value: 
+      objectReference: {fileID: 68066773}
     - target: {fileID: 2351376198087889314, guid: ff8a909f171c2f8459c3749b6222cd0f, type: 3}
       propertyPath: m_Name
       value: Player1
@@ -1003,6 +1011,14 @@ PrefabInstance:
       propertyPath: winPanel
       value: 
       objectReference: {fileID: 2075800636}
+    - target: {fileID: 2665641661392925542, guid: 52e8db38e9ffa0249a85a7dd0301dd20, type: 3}
+      propertyPath: scoreTextGame
+      value: 
+      objectReference: {fileID: 68066775}
+    - target: {fileID: 2665641661392925542, guid: 52e8db38e9ffa0249a85a7dd0301dd20, type: 3}
+      propertyPath: bulletDestroyEffect
+      value: 
+      objectReference: {fileID: 68066773}
     - target: {fileID: 2852177740047946640, guid: 52e8db38e9ffa0249a85a7dd0301dd20, type: 3}
       propertyPath: m_RootOrder
       value: 8
