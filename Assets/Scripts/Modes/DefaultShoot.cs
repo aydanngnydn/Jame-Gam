@@ -7,6 +7,9 @@ public class DefaultShoot : MonoBehaviour
     [SerializeField] private GameObject playerBullet;
     [SerializeField] private float nextFire = 0.2F;
     //[SerializeField] private AudioClip shotClip;
+
+    private ParticleSystem smokeParticle;
+
     private float myTime = 0.0F;
     private float fireDelta = 0.2F;
 
@@ -39,6 +42,7 @@ public class DefaultShoot : MonoBehaviour
     private void HandleShootEvents()
     {
         OnDefaultFire?.Invoke();
+        smokeParticle.Play();
         //SoundManager.Instance.PlaySound(shotClip);
     }
 }

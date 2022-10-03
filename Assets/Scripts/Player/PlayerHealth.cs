@@ -15,24 +15,23 @@ public class PlayerHealth : MonoBehaviour
     [SerializeField] private GameObject winPanel;
     [SerializeField] private TextMeshProUGUI scoreTextGame;
 
+    private ParticleSystem bloodParticle;
+
     private Collider2D collider2D;
 
     public event Action OnHealthDecrease;
     public event Action OnPlayerDeath;
 
-    protected virtual void OnEnable()
+    private void Awake()
     {
+        bloodParticle = GetComponentInChildren<ParticleSystem>();
+        collider2D = GetComponent<Collider2D>();
         ResetHealth();
     }
 
     protected void ResetHealth()
     {
         currentHealth = maxHealth;
-    }
-
-    private void Awake()
-    {
-        collider2D = GetComponent<Collider2D>();
     }
 
     public void DecraseHealth(int damage)
@@ -43,11 +42,11 @@ public class PlayerHealth : MonoBehaviour
         {
             OnPlayerDeath?.Invoke();
             Destroy(collider2D);
-            StartCoroutine(winScene(this.gameObject.name));
+            StartCoroutine(WinScene(this.gameObject.name));
         }
         else
         {
-            OnHealthDecrease?.Invoke();
+            HandleDamageEvents();
         }
     }
 
@@ -67,9 +66,16 @@ public class PlayerHealth : MonoBehaviour
         Destroy(destroyEffect, bulletDestroyTime);
     }
 
-    public IEnumerator winScene(string name)
+
+    private void HandleDamageEvents()
     {
-        
+        OnHealthDecrease?.Invoke();
+        bloodParticle.Play();
+    }
+
+    private IEnumerator WinScene(string name)
+    {
+
         yield return new WaitForSeconds(1.5f);
         winPanel.SetActive(true);
         scoreTextGame.text = name + " has won!";
