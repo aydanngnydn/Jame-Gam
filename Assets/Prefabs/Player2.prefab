@@ -205,7 +205,7 @@ MonoBehaviour:
   groundCheckLayer:
     serializedVersion: 2
     m_Bits: 8
-  jumpSpeed: 10
+  jumpSpeed: 11.5
   jumpDelay: 0.25
   doubleJumpMode: 0
   maxSpeed: 7

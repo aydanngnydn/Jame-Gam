@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class BoxSpawner : MonoBehaviour
 {
-    [SerializeField] private float spawnTime = 10f;
+    [SerializeField] private float spawnTime = 1f;
     [SerializeField] private GameObject box;
     private float randomSpawnPoint;
     void Start()
@@ -15,7 +15,7 @@ public class BoxSpawner : MonoBehaviour
     {
         while (true)
         {
-            int randAngle = Random.Range(0, 1);
+            int randAngle = Random.Range(0, 2);
             yield return new WaitForSeconds(spawnTime);
             float halfLength = GetComponent<SpriteRenderer>().bounds.size.x / 2;
             float spawnPos = transform.position.x;
