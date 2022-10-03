@@ -10,7 +10,9 @@ public class HealthBar : MonoBehaviour
     [SerializeField] private PlayerHealth _player2Health;
     [SerializeField] private GameObject[] healths1;
     [SerializeField] private GameObject[] healths2;
-    private int index = 0;
+    private int index1 = 0;
+    private int index2 = 0;
+    
 
     private void Update()
     {
@@ -37,12 +39,12 @@ public class HealthBar : MonoBehaviour
     }
     void DestroyHealthbar1()
     {
-        Destroy(healths1[index]);
-        index++;
+        Destroy(healths1[index1]);
+        index1++;
     }
     void DestroyHealthbar2()
     {
-        Destroy(healths2[index]);
-        index++;
+        Destroy(healths2[index2]);
+        index2++;
     }
 }
