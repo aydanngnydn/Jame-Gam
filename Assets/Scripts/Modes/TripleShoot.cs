@@ -10,6 +10,9 @@ public class TripleShoot : MonoBehaviour
     [SerializeField] private string selectPlayer;
     [SerializeField] private float nextFire = 0.2F;
     [SerializeField] private DefaultShoot bulletSpawner;
+
+    [SerializeField] private AudioClip clip;
+
     private float myTime = 0.0F;
     private bool isShootAvailable, timePassed = false;
     private float fireDelta = 0.2F;
@@ -42,6 +45,8 @@ public class TripleShoot : MonoBehaviour
 
                 myTime = 0f;
 
-            }
+            SoundManager.Instance.PlaySound(clip);
+
+        }
     }
 }

@@ -5,6 +5,7 @@ public class DefaultShoot : MonoBehaviour
     [SerializeField] private string selectPlayer;
     [SerializeField] private GameObject playerBullet;
     [SerializeField] private float nextFire = 0.2F;
+    [SerializeField] private AudioClip clip;
     private float myTime = 0.0F;
     private float fireDelta = 0.2F;
 
@@ -27,6 +28,8 @@ public class DefaultShoot : MonoBehaviour
             nextFire = nextFire - myTime;
 
             myTime = 0f;
+
+            SoundManager.Instance.PlaySound(clip);
         }
     }
 }
