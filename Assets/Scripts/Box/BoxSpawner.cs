@@ -15,12 +15,13 @@ public class BoxSpawner : MonoBehaviour
     {
         while (true)
         {
+            int randAngle = Random.Range(0, 1);
             yield return new WaitForSeconds(spawnTime);
             float halfLength = GetComponent<SpriteRenderer>().bounds.size.x / 2;
             float spawnPos = transform.position.x;
             randomSpawnPoint = Random.Range(spawnPos - halfLength, spawnPos + halfLength);
             
-            Instantiate(box, new Vector2(randomSpawnPoint, transform.position.y), Quaternion.identity);
+            Instantiate(box, new Vector2(randomSpawnPoint, transform.position.y), Quaternion.Euler(new Vector3(0, randAngle * 180, 0)));
         }
     }
 }
