@@ -16,11 +16,7 @@ public class PassThhroughPlatforms : MonoBehaviour
 
     private void Update()
     {
-        if (Input.GetKeyDown(KeyCode.S) && gameObject.name == "Player1" && currentOneWayPlatform != null)
-        {
-            StartCoroutine(DisableCollision());
-        }
-        else if (Input.GetKeyDown(KeyCode.DownArrow) && gameObject.name == "Player2" && currentOneWayPlatform != null)
+        if ((Input.GetKeyDown(KeyCode.S) && gameObject.name == "Player1" || Input.GetKeyDown(KeyCode.DownArrow) && gameObject.name == "Player2") && currentOneWayPlatform != null)
         {
             StartCoroutine(DisableCollision());
         }
@@ -28,7 +24,7 @@ public class PassThhroughPlatforms : MonoBehaviour
 
     private void OnCollisionEnter2D(Collision2D col)
     {
-        if (col.gameObject.CompareTag("Platform"));
+        if (col.gameObject.CompareTag("Platform"))
         {
             currentOneWayPlatform = col.gameObject;
         }
@@ -36,7 +32,7 @@ public class PassThhroughPlatforms : MonoBehaviour
 
     private void OnCollisionExit2D(Collision2D other)
     {
-        if (other.gameObject.CompareTag("Platform"));
+        if (other.gameObject.CompareTag("Platform"))
         {
            currentOneWayPlatform = null;
         }

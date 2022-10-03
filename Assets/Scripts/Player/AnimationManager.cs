@@ -50,7 +50,7 @@ public class AnimationManager : MonoBehaviour
         }
         else
         {
-            animator.SetFloat("PlayerSpeed", 0.5f);
+            animator.SetFloat("PlayerSpeed", 0);
         }
     }
 
