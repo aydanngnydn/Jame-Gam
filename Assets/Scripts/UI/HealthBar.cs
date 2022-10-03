@@ -40,12 +40,11 @@ public class HealthBar : MonoBehaviour
     }
     void DestroyHealthbar1()
     {
-        healthPerPlayer++;
-        if (true)
+        healthPerPlayer--;
+        if (healthPerPlayer % 4 == 0)
         {
             Destroy(healths1[index1]);
             index1++;
-
         }
     }
     void DestroyHealthbar2()
