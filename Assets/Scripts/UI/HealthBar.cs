@@ -13,7 +13,7 @@ public class HealthBar : MonoBehaviour
     private int index1 = 0;
     private int index2 = 0;
 
-    private int number;
+    [SerializeField] private int healthPerPlayer;
 
     private void Update()
     {
@@ -40,7 +40,7 @@ public class HealthBar : MonoBehaviour
     }
     void DestroyHealthbar1()
     {
-        number++;
+        healthPerPlayer++;
         if (true)
         {
             Destroy(healths1[index1]);
