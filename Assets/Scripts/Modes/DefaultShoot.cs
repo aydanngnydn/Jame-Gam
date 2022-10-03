@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections.Generic;
 using UnityEngine;
 
 public class DefaultShoot : MonoBehaviour
@@ -8,7 +9,7 @@ public class DefaultShoot : MonoBehaviour
     [SerializeField] private float nextFire = 0.2F;
     //[SerializeField] private AudioClip shotClip;
 
-    private ParticleSystem smokeParticle;
+    [SerializeField] private ParticleSystem smokeParticle;
 
     private float myTime = 0.0F;
     private float fireDelta = 0.2F;

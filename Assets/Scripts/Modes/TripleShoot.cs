@@ -10,6 +10,7 @@ public class TripleShoot : MonoBehaviour
     [SerializeField] private string selectPlayer;
     [SerializeField] private float nextFire = 0.2F;
     [SerializeField] private DefaultShoot bulletSpawner;
+    [SerializeField] private ParticleSystem smokeParticle;
 
     [SerializeField] private AudioClip shotClip;
 
@@ -53,6 +54,7 @@ public class TripleShoot : MonoBehaviour
     private void HandleShootEvents()
     {
         OnTripleFire?.Invoke();
+        smokeParticle.Play();
         SoundManager.Instance.PlaySound(shotClip);
     }
 }
