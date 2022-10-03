@@ -42,7 +42,7 @@ public class HealthBar : MonoBehaviour
     void DestroyHealthbar1()
     {
         healthPerPlayer1--;
-        if (healthPerPlayer1 % 4 == 0)
+        if (healthPerPlayer1 % 4 == 0 && healths1[index1] != null)
         {
             Destroy(healths1[index1]);
             index1++;
@@ -51,7 +51,7 @@ public class HealthBar : MonoBehaviour
     void DestroyHealthbar2()
     {
         healthPerPlayer2--;
-        if (healthPerPlayer2 % 4 == 0)
+        if (healthPerPlayer2 % 4 == 0 && healths2[index2] != null)
         {
             Destroy(healths2[index2]);
             index2++;

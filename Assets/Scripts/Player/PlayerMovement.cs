@@ -135,7 +135,10 @@ public class PlayerMovement : MonoBehaviour
             {
                 rb.drag = linearDrag * 0.8f;
             }
-            rb.gravityScale = 0f;
+            if (OnGroundCheck())
+                rb.gravityScale = 0f;
+            else
+                rb.gravityScale = 4f;
         }
         else
         {
