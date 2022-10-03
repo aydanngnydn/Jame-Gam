@@ -63,6 +63,7 @@ GameObject:
   - component: {fileID: 700977885380591147}
   - component: {fileID: 4868223427167593104}
   - component: {fileID: 2599498315678733757}
+  - component: {fileID: 1360784372913007069}
   m_Layer: 8
   m_Name: Player1
   m_TagString: Untagged
@@ -267,6 +268,18 @@ Animator:
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorControllerStateOnDisable: 0
+--- !u!114 &1360784372913007069
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2351376198087889314}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c1a1470b7e3c0634faf9cb93d3558564, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &4381244271463788760
 GameObject:
   m_ObjectHideFlags: 0
