@@ -1,6 +1,8 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class HealthBar : MonoBehaviour
 {
@@ -9,6 +11,14 @@ public class HealthBar : MonoBehaviour
     [SerializeField] private GameObject[] healths1;
     [SerializeField] private GameObject[] healths2;
     private int index = 0;
+
+    private void Update()
+    {
+        if (Input.GetKeyDown(KeyCode.Escape))
+        {
+            SceneManager.LoadScene(0);
+        }
+    }
 
     private void OnEnable()
     {
