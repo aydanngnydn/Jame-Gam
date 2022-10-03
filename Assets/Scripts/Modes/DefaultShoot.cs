@@ -25,7 +25,7 @@ public class DefaultShoot : MonoBehaviour
     {
         myTime += Time.deltaTime;
 
-        if ((Input.GetKeyDown(KeyCode.T) && selectPlayer == "Player1" || Input.GetKeyDown(KeyCode.AltGr) && selectPlayer == "Player2") && myTime > nextFire)
+        if ((Input.GetKeyDown(KeyCode.T) && selectPlayer == "Player1" || Input.GetKeyDown(KeyCode.Period) && selectPlayer == "Player2") && myTime > nextFire)
         {
             nextFire = myTime + fireDelta;
             if (playerBullet != null)
