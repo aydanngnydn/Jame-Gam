@@ -9,7 +9,8 @@ public class VolumeSlider : MonoBehaviour
 
     private void Awake()
     {
-        volumeSlider.onValueChanged.AddListener(value => SoundManager.Instance.ChangeMasterVolume(value));
         volumeSlider = GetComponent<Slider>();
+        SoundManager.Instance.ChangeMasterVolume(volumeSlider.value);
+        volumeSlider.onValueChanged.AddListener(value => SoundManager.Instance.ChangeMasterVolume(value));
     }
 }
