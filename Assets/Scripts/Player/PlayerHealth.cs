@@ -41,7 +41,7 @@ public class PlayerHealth : MonoBehaviour
         {
             OnPlayerDeath?.Invoke();
             Destroy(collider2D);
-            Destroy(gameObject, 0.5f);
+            
             StartCoroutine(winScene());
         }
         else
@@ -66,8 +66,9 @@ public class PlayerHealth : MonoBehaviour
         Destroy(destroyEffect, bulletDestroyTime);
     }
 
-    IEnumerator winScene()
+    public IEnumerator winScene()
     {
+        yield return new WaitForSeconds(1.5f);
         winPanel.SetActive(true);
         yield return new WaitForSeconds(3f);
         SceneManager.LoadScene(0);
