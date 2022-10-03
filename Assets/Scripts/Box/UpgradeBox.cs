@@ -13,7 +13,7 @@ public class UpgradeBox : MonoBehaviour
 
     private void Awake()
     {
-        int rand = Random.Range(1, 4);
+        int rand = Random.Range(1, 5);
         
         switch (rand)
         {

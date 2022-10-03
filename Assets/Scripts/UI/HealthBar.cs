@@ -30,6 +30,9 @@ public class HealthBar : MonoBehaviour
         _player1Health.OnPlayerDeath += DestroyHealthbar1;
         _player2Health.OnHealthDecrease += DestroyHealthbar2;
         _player2Health.OnPlayerDeath += DestroyHealthbar2;
+        
+        _player1Health.OnHealthIncrease += IncreaseHealthBar1;
+        _player2Health.OnHealthIncrease += IncreaseHealthBar2;
     }
 
     private void OnDisable()
@@ -38,22 +41,36 @@ public class HealthBar : MonoBehaviour
         _player1Health.OnPlayerDeath -= DestroyHealthbar1;
         _player2Health.OnHealthDecrease -= DestroyHealthbar2;
         _player2Health.OnPlayerDeath -= DestroyHealthbar2;
+
+        _player1Health.OnHealthIncrease -= IncreaseHealthBar1;
+        _player2Health.OnHealthIncrease -= IncreaseHealthBar2;
     }
+
+    private void IncreaseHealthBar1()
+    {
+        if(index1 != 0) healths1[index1 - 1].SetActive(true);
+    }
+
+    private void IncreaseHealthBar2()
+    {
+        if (index2 != 0) healths2[index2 - 1].SetActive(true);
+    }
+
     void DestroyHealthbar1()
     {
-        healthPerPlayer1--;
-        if (healthPerPlayer1 % 4 == 0 && healths1[index1] != null)
+        var health = _player1Health.GetHealth();
+        if ( health % 4 == 0 && healths1[index1] != null)
         {
-            Destroy(healths1[index1]);
+            healths1[index1].SetActive(false);
             index1++;
         }
     }
     void DestroyHealthbar2()
     {
-        healthPerPlayer2--;
-        if (healthPerPlayer2 % 4 == 0 && healths2[index2] != null)
+        var health = _player2Health.GetHealth();
+        if (health % 4 == 0 && healths2[index2] != null)
         {
-            Destroy(healths2[index2]);
+            healths2[index2].SetActive(false);
             index2++;
         }
     }

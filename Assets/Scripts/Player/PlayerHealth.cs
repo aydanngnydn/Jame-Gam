@@ -20,6 +20,7 @@ public class PlayerHealth : MonoBehaviour
     private Collider2D collider2D;
 
     public event Action OnHealthDecrease;
+    public event Action OnHealthIncrease;
     public event Action OnPlayerDeath;
 
     private void Awake()
@@ -53,6 +54,7 @@ public class PlayerHealth : MonoBehaviour
 
     public void IncreaseHealth(int refill)
     {
+        OnHealthIncrease?.Invoke();
         currentHealth += refill;
     }
 
@@ -84,5 +86,10 @@ public class PlayerHealth : MonoBehaviour
         scoreTextGame.text = name + " has won!";
         yield return new WaitForSeconds(1.1f);
         SceneManager.LoadScene(0);
+    }
+
+    public int GetHealth()
+    {
+        return currentHealth;
     }
 }

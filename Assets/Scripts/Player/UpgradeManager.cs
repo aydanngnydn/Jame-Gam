@@ -63,7 +63,7 @@ public class UpgradeManager : MonoBehaviour
     {
         StartCoroutine(IHealthIncrease());
         
-        healthMode.IncreaseHealth(1);
+        healthMode.IncreaseHealth(4);
     }
 
     IEnumerator IHealthIncrease()
@@ -77,7 +77,7 @@ public class UpgradeManager : MonoBehaviour
     void DamageMode()
     {
         StartCoroutine(IHealthDecrease());
-        healthMode.DecraseHealth(1);
+        healthMode.DecraseHealth(4);
     }
 
     IEnumerator IHealthDecrease()
