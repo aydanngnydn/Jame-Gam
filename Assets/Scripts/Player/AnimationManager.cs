@@ -61,12 +61,12 @@ public class AnimationManager : MonoBehaviour
 
     private void DeathAnim()
     {
-        animator.SetTrigger("Death");
+        //animator.SetTrigger("Death");
     }
 
     private void TripleFireAnim()
     {
-        animator.SetTrigger("TripleFire");
+        animator.SetTrigger("DefaultFire");
     }
 
     private void DefaultFireAnim()

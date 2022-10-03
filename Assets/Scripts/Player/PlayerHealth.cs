@@ -41,8 +41,8 @@ public class PlayerHealth : MonoBehaviour
         if (!AliveCheck())
         {
             OnPlayerDeath?.Invoke();
-            Destroy(collider2D);
             StartCoroutine(WinScene(this.gameObject.name));
+            //gameObject.GetComponent<Collider2D>().SetActive(false);
         }
         else
         {

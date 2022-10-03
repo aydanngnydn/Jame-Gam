@@ -34,7 +34,7 @@ public class PassThhroughPlatforms : MonoBehaviour
     {
         if (other.gameObject.CompareTag("Platform"))
         {
-           currentOneWayPlatform = null;
+           //currentOneWayPlatform = null;
         }
     }
 
@@ -42,7 +42,9 @@ public class PassThhroughPlatforms : MonoBehaviour
     {
         BoxCollider2D platformCollider = currentOneWayPlatform.GetComponent<BoxCollider2D>();
         Physics2D.IgnoreCollision(playerCollider, platformCollider);
-        yield return new WaitForSeconds(5f);
+        print("aaa");
+        yield return new WaitForSeconds(0.5f);
+        print("bbb");
         Physics2D.IgnoreCollision(playerCollider, platformCollider, false);
     }
 }

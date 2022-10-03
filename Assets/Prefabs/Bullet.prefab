@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 6938694495978942102}
   - component: {fileID: 3380309616304383353}
   - component: {fileID: -4648820917966937499}
-  - component: {fileID: 4528372438517585658}
+  - component: {fileID: 6175028018851743478}
   m_Layer: 6
   m_Name: Bullet
   m_TagString: Untagged
@@ -102,7 +102,7 @@ MonoBehaviour:
   bulletSpeed: 10
   destroyEffect: {fileID: 0}
   destroyTime: 0.1
---- !u!61 &4528372438517585658
+--- !u!61 &6175028018851743478
 BoxCollider2D:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -119,12 +119,12 @@ BoxCollider2D:
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0.5, y: 0.5}
-    oldSize: {x: 0.125, y: 0.041666668}
+    oldSize: {x: 0.20833333, y: 0.083333336}
     newSize: {x: 1, y: 2}
     adaptiveTilingThreshold: 0.5
     drawMode: 0
     adaptiveTiling: 0
   m_AutoTiling: 0
   serializedVersion: 2
-  m_Size: {x: 1, y: 2}
+  m_Size: {x: 0.20833333, y: 0.083333336}
   m_EdgeRadius: 0

@@ -227,7 +227,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   maxHealth: 20
-  currentHealth: 4
+  currentHealth: 20
   bulletDestroyEffect: {fileID: 0}
   bulletDestroyTime: 0.2
   winPanel: {fileID: 0}
@@ -426,11 +426,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5266018079059171200, guid: c4a6b9d280dc4f148976382a76eef108, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 0.679
+      value: 0.852
       objectReference: {fileID: 0}
     - target: {fileID: 5266018079059171200, guid: c4a6b9d280dc4f148976382a76eef108, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 0.36
+      value: 0.258
       objectReference: {fileID: 0}
     - target: {fileID: 5266018079059171200, guid: c4a6b9d280dc4f148976382a76eef108, type: 3}
       propertyPath: m_LocalPosition.z

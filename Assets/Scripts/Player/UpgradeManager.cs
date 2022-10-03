@@ -35,6 +35,7 @@ public class UpgradeManager : MonoBehaviour
 
         if (gameObject.TryGetComponent(out UpgradeBox box))
         {
+            Physics2D.IgnoreCollision(gameObject.GetComponent<Collider2D>(), box.GetComponent<Collider2D>());
             boxAnim = box.GetComponent<Animator>();
             boxAnim.SetTrigger("BoxOpen");
 

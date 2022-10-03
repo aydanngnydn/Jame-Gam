@@ -55,6 +55,6 @@ public class TripleShoot : MonoBehaviour
     {
         OnTripleFire?.Invoke();
         smokeParticle.Play();
-        SoundManager.Instance.PlaySound(shotClip);
+        //SoundManager.Instance.PlaySound(shotClip);
     }
 }
