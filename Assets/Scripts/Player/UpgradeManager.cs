@@ -68,6 +68,7 @@ public class UpgradeManager : MonoBehaviour
     IEnumerator IHealthIncrease()
     {
         var text = Instantiate(increaseText, this.gameObject.transform.position, Quaternion.identity);
+        text.gameObject.transform.Translate(Vector3.up * Time.deltaTime);
         yield return new WaitForSeconds(2);
         Destroy(text);
     }
@@ -81,6 +82,7 @@ public class UpgradeManager : MonoBehaviour
     IEnumerator IHealthDecrease()
     {
         var text = Instantiate(decreaseText, this.gameObject.transform.position, Quaternion.identity);
+        text.gameObject.transform.Translate(Vector3.up * Time.deltaTime);
         yield return new WaitForSeconds(2);
         Destroy(text);
     }
@@ -114,6 +116,7 @@ public class UpgradeManager : MonoBehaviour
     IEnumerator IDoubleJump()
     {
         var text = Instantiate(doubleText, this.gameObject.transform.position, Quaternion.identity);
+        text.gameObject.transform.Translate(Vector3.up * Time.deltaTime);
         yield return new WaitForSeconds(2);
         Destroy(text);
     }
@@ -152,6 +155,7 @@ public class UpgradeManager : MonoBehaviour
     IEnumerator ITriple()
     {
         var text = Instantiate(tripleText, this.gameObject.transform.position, Quaternion.identity);
+        text.gameObject.transform.Translate(Vector3.up * Time.deltaTime);
         yield return new WaitForSeconds(2);
         Destroy(text);
     }
