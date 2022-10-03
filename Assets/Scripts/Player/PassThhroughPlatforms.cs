@@ -5,55 +5,49 @@ using UnityEngine;
 
 public class PassThhroughPlatforms : MonoBehaviour
 {
-    private Collider2D collider;
-    private bool player1OnPlatform, player2OnPlatform;
-    
-   
+    private GameObject currentOneWayPlatform;
+
+    private BoxCollider2D playerCollider;
 
     private void Start()
     {
-        collider = GetComponent<Collider2D>();
+        playerCollider = GetComponent<BoxCollider2D>();
     }
 
     private void Update()
     {
-        if (player1OnPlatform && Input.GetKeyDown(KeyCode.S))
+        if (Input.GetKeyDown(KeyCode.S) && gameObject.name == "Player1" && currentOneWayPlatform != null)
         {
-            collider.enabled = false;
-            StartCoroutine(EnableCollider());
+            StartCoroutine(DisableCollision());
         }
-        else if (player2OnPlatform && Input.GetKeyDown(KeyCode.DownArrow))
+        else if (Input.GetKeyDown(KeyCode.DownArrow) && gameObject.name == "Player2" && currentOneWayPlatform != null)
         {
-            collider.enabled = false;
-            StartCoroutine(EnableCollider());
-        }
-    }
-
-    private IEnumerator EnableCollider()
-    {
-        yield return new WaitForSeconds(0.5f);
-        collider.enabled = true;
-    }
-
-    void SetPlayerOnPlatform(Collision2D other, bool value)
-    { 
-        var player = other.gameObject.GetComponent<PlayerHealth>();
-        if (player != null && player.name == "Player1")
-        {
-            player1OnPlatform = value;
-        }
-        else if (player != null && player.name == "Player2")
-        {
-            player2OnPlatform = value;
+            StartCoroutine(DisableCollision());
         }
     }
 
     private void OnCollisionEnter2D(Collision2D col)
     {
-        SetPlayerOnPlatform(col, true);
+        if (col.gameObject.CompareTag("Platform"));
+        {
+            currentOneWayPlatform = col.gameObject;
+        }
     }
-    private void OnCollisionExit2D(Collision2D col)
+
+    private void OnCollisionExit2D(Collision2D other)
     {
-        SetPlayerOnPlatform(col, false);
+        if (other.gameObject.CompareTag("Platform"));
+        {
+           currentOneWayPlatform = null;
+        }
+    }
+
+    IEnumerator DisableCollision()
+    {
+        BoxCollider2D platformCollider = currentOneWayPlatform.GetComponent<BoxCollider2D>();
+            Debug.Log(platformCollider);
+        Physics2D.IgnoreCollision(playerCollider, platformCollider);
+        yield return new WaitForSeconds(5f);
+        Physics2D.IgnoreCollision(playerCollider, platformCollider, false);
     }
 }
