@@ -41,8 +41,9 @@ public class PlayerHealth : MonoBehaviour
         if (!AliveCheck())
         {
             OnPlayerDeath?.Invoke();
-            StartCoroutine(WinScene(this.gameObject.name));
-            //gameObject.GetComponent<Collider2D>().SetActive(false);
+            StartCoroutine(WinScene(gameObject.name));
+            gameObject.GetComponent<Collider2D>().enabled = false;
+            gameObject.GetComponent<SpriteRenderer>().enabled = false;
         }
         else
         {
@@ -75,11 +76,13 @@ public class PlayerHealth : MonoBehaviour
 
     private IEnumerator WinScene(string name)
     {
-
-        yield return new WaitForSeconds(1.5f);
+        yield return new WaitForSeconds(1f);
         winPanel.SetActive(true);
+        
+        if (name == "Player1") name = "Player2";
+        else name = "Player1";
         scoreTextGame.text = name + " has won!";
-        yield return new WaitForSeconds(3f);
+        yield return new WaitForSeconds(1.1f);
         SceneManager.LoadScene(0);
     }
 }
