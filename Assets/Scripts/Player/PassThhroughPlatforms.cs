@@ -45,7 +45,6 @@ public class PassThhroughPlatforms : MonoBehaviour
     IEnumerator DisableCollision()
     {
         BoxCollider2D platformCollider = currentOneWayPlatform.GetComponent<BoxCollider2D>();
-            Debug.Log(platformCollider);
         Physics2D.IgnoreCollision(playerCollider, platformCollider);
         yield return new WaitForSeconds(5f);
         Physics2D.IgnoreCollision(playerCollider, platformCollider, false);
