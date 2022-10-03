@@ -1,5 +1,7 @@
 using System;
+using System.Collections;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class PlayerHealth : MonoBehaviour
 {
@@ -8,6 +10,8 @@ public class PlayerHealth : MonoBehaviour
 
     [SerializeField] private GameObject bulletDestroyEffect;
     [SerializeField] private float bulletDestroyTime;
+
+    [SerializeField] private GameObject winPanel;
 
     private Collider2D collider2D;
 
@@ -38,6 +42,7 @@ public class PlayerHealth : MonoBehaviour
             OnPlayerDeath?.Invoke();
             Destroy(collider2D);
             Destroy(gameObject, 0.5f);
+            StartCoroutine(winScene());
         }
         else
         {
@@ -59,5 +64,12 @@ public class PlayerHealth : MonoBehaviour
     {
         GameObject destroyEffect = Instantiate(bulletDestroyEffect, contactPoint, Quaternion.identity);
         Destroy(destroyEffect, bulletDestroyTime);
+    }
+
+    IEnumerator winScene()
+    {
+        winPanel.SetActive(true);
+        yield return new WaitForSeconds(3f);
+        SceneManager.LoadScene(0);
     }
 }
