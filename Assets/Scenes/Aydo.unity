@@ -1700,11 +1700,15 @@ MonoBehaviour:
   - {fileID: 979229711}
   - {fileID: 680064089}
   - {fileID: 1195632333}
+  - {fileID: 1195632333}
+  - {fileID: 1195632333}
   healths2:
   - {fileID: 524504952}
   - {fileID: 1758560222}
   - {fileID: 1668562146}
   - {fileID: 1594258190}
+  - {fileID: 1076295780}
+  - {fileID: 1076295780}
   - {fileID: 1076295780}
   healthPerPlayer1: 20
   healthPerPlayer2: 20
