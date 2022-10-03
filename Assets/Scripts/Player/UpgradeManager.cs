@@ -103,12 +103,12 @@ public class UpgradeManager : MonoBehaviour
             if (!playerMovement.doubleJumpMode)
             {
                 playerMovement.doubleJumpMode = !playerMovement.doubleJumpMode;
-                yield return new WaitForSeconds(5f);
+                yield return new WaitForSeconds(10f);
                 playerMovement.doubleJumpMode = !playerMovement.doubleJumpMode;
             }
             else
             {
-                yield return new WaitForSeconds(5f);
+                yield return new WaitForSeconds(10f);
                 playerMovement.doubleJumpMode = !playerMovement.doubleJumpMode;
             }
         }
@@ -138,14 +138,14 @@ public class UpgradeManager : MonoBehaviour
                 isTripleMode = !isTripleMode;
                 defaultMode.enabled = false;
                 tripleMode.enabled = true;
-                yield return new WaitForSeconds(5f);
+                yield return new WaitForSeconds(10f);
                 isTripleMode = !isTripleMode;
                 defaultMode.enabled = true;
                 tripleMode.enabled = false;
             }
             else
             {
-                yield return new WaitForSeconds(5f);
+                yield return new WaitForSeconds(10f);
                 isTripleMode = !isTripleMode;
                 defaultMode.enabled = true;
                 tripleMode.enabled = false;
