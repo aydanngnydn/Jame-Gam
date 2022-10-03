@@ -259,7 +259,7 @@ MonoBehaviour:
   selectPlayer: Player1
   playerBullet: {fileID: 632609147241551079, guid: 996cfbe8192e1bf4ab87d45e71736be0, type: 3}
   nextFire: 0.2
-  clip: {fileID: 0}
+  clip: {fileID: 8300000, guid: 8ea5298fb9972c44f85e5d025b8cab49, type: 3}
 --- !u!114 &8179758044203263522
 MonoBehaviour:
   m_ObjectHideFlags: 0
