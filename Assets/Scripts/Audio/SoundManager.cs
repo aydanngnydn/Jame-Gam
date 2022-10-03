@@ -1,26 +1,28 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class SoundManager : MonoBehaviour
 {
     public static SoundManager Instance;
-    [SerializeField] private AudioSource musicSource, effectSource;
+    [SerializeField] private AudioSource[] musicSources;
+    [SerializeField] private AudioSource effectSource;
 
 
     private void OnEnable()
     {
-        
+        //SceneManager.activeSceneChanged += ChangeActiveMusic;
     }
 
     private void OnDisable()
     {
-        
+        //SceneManager.activeSceneChanged -= ChangeActiveMusic;
     }
 
     private void Awake()
     {
-        if(Instance == null)
+        if (Instance == null)
         {
             Instance = this;
             DontDestroyOnLoad(gameObject);
@@ -45,9 +47,25 @@ public class SoundManager : MonoBehaviour
     {
         effectSource.mute = !effectSource.mute;
     }
-    
+
     public void ToggleMusic()
     {
-        musicSource.mute = !musicSource.mute;
+        foreach (AudioSource audioSource in musicSources)
+            audioSource.mute = !audioSource.mute;
+    }
+
+    private void ChangeActiveMusic(Scene current, Scene next)
+    {
+        if (SceneManager.GetActiveScene().buildIndex == 0)
+        {
+            musicSources[0].mute = false;
+            musicSources[1].mute = true;
+        }
+        else if (SceneManager.GetActiveScene().buildIndex == 1)
+        {
+            Debug.Log("1");
+            musicSources[0].mute = true;
+            musicSources[1].mute = false;
+        }
     }
 }
