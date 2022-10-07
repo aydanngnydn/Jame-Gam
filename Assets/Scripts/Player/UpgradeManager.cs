@@ -14,12 +14,12 @@ public class UpgradeManager : MonoBehaviour
     [SerializeField] private GameObject tripleText;
     [SerializeField] private GameObject increaseText;
     [SerializeField] private GameObject decreaseText;
+    [SerializeField] private Transform canvasObject;
 
     private bool isTripleMode = false;
 
     private Coroutine TripleRoutine;
     private Coroutine DoubleJumpRoutine;
-
 
     private void Awake()
     {
@@ -68,7 +68,8 @@ public class UpgradeManager : MonoBehaviour
 
     IEnumerator IHealthIncrease()
     {
-        var text = Instantiate(increaseText, this.gameObject.transform.position, Quaternion.identity);
+        var text = Instantiate(increaseText, canvasObject.transform.position + new Vector3(0, 300, 0), Quaternion.identity);
+        text.transform.SetParent(canvasObject);
         text.gameObject.transform.Translate(Vector3.up * Time.deltaTime);
         yield return new WaitForSeconds(2);
         Destroy(text);
@@ -82,7 +83,8 @@ public class UpgradeManager : MonoBehaviour
 
     IEnumerator IHealthDecrease()
     {
-        var text = Instantiate(decreaseText, this.gameObject.transform.position, Quaternion.identity);
+        var text = Instantiate(decreaseText, canvasObject.transform.position + new Vector3(0, 300, 0), Quaternion.identity);
+        text.transform.SetParent(canvasObject);
         text.gameObject.transform.Translate(Vector3.up * Time.deltaTime);
         yield return new WaitForSeconds(2);
         Destroy(text);
@@ -116,7 +118,8 @@ public class UpgradeManager : MonoBehaviour
 
     IEnumerator IDoubleJump()
     {
-        var text = Instantiate(doubleText, this.gameObject.transform.position, Quaternion.identity);
+        var text = Instantiate(doubleText, canvasObject.transform.position + new Vector3(0, 300, 0), Quaternion.identity);
+        text.transform.SetParent(canvasObject);
         text.gameObject.transform.Translate(Vector3.up * Time.deltaTime);
         yield return new WaitForSeconds(2);
         Destroy(text);
@@ -155,7 +158,8 @@ public class UpgradeManager : MonoBehaviour
 
     IEnumerator ITriple()
     {
-        var text = Instantiate(tripleText, this.gameObject.transform.position, Quaternion.identity);
+        var text = Instantiate(tripleText, canvasObject.transform.position + new Vector3(0, 300, 0), Quaternion.identity);
+        text.transform.SetParent(canvasObject);
         text.gameObject.transform.Translate(Vector3.up * Time.deltaTime);
         yield return new WaitForSeconds(2);
         Destroy(text);
