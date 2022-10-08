@@ -1,5 +1,7 @@
 # Big Irony
 
+![inGame](Assets/Art/Background/background.png)
+
 Big Irony is a local co-op game made for Ludum Dare 51 inspired by the song Big Iron by Marty Robbins.
 
 ## Description
@@ -52,7 +54,3 @@ Period - Shooting
 
 - 0.1
   - Initial Release, Jam Build
-
-## Logo
-
-![inGame](Assets/Art/Background/background.png)
